@@ -102,7 +102,7 @@
             </li>
         </a>
 
-        <a href="profile.php">
+        <a href="order.php">
             <li>
 
                 <svg fill="white" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -120,7 +120,7 @@
             </li>
         </a>
 
-        <a href="profile.php">
+        <a href="transaction.php">
             <li>
 
                 <svg fill="white" width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
