@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to proceed to the backend for checkout
     async function proceedToCheckout(paymentMethod, cashlessMethod) {
         try {
-            const response = await fetch("../controller/result.php", {
+            const response = await fetch("../controller/checkout.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             if (result.status === "success") {
                 alert("Checkout successful!");
-                window.location.href = "../view/status.php"; 
+                window.location.href = "../view/result.php"; 
             } else {
                 alert(result.message || "Checkout failed. Please try again.");
             }
