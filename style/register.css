@@ -1,0 +1,135 @@
+.register-page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: Arial, sans-serif; 
+    background-color: #000000;
+    align-items: center;
+}
+
+.register-info {
+    flex: 1;
+    background-color: #000000;
+    color: beige;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px rgb(255, 255, 255) solid;
+}
+
+
+.register-info button{
+    background-color: rgb(167, 56, 0);
+    border: none;
+    border-radius: 10px;
+    padding-inline: 10%;
+    padding-block:10px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px black;
+    margin-top: 50px;
+}
+
+.register-info button:hover{
+    background-color: rgb(146, 50, 2);
+}
+
+.register-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 3%;
+    width: 100%;
+    
+}
+
+.register-logo p{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.register-logo img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+
+.register-form {
+    background-color: #ffffff;
+    padding-block: 30px;
+    padding-inline: 5%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 3px rgb(255, 255, 255);
+    height: fit-content;
+    border-radius: 20px;
+    width: 15%;
+    margin-inline: 10%;
+    
+}
+
+.register-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.register-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.register-form button {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-form button:hover {
+    background-color: #45a049;
+}
+
+
+
+.register-form h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.register-form button {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-block: 50px;
+}
+
+.register-form button:hover {
+    background-color: #45a049;
+}

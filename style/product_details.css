@@ -1,0 +1,149 @@
+.product-info-container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h1{
+    text-indent: -5%;
+    font-size: 32px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.product-desc{
+    font-size: 18px;
+    color: grey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-price{
+    color: green;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.product-details-content{
+    margin-inline: 5%;
+    margin-block:80px;
+}
+
+.product-details-content h1{ 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 48px;
+}
+
+.product-selection-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.product-selection-container h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+}
+
+.product-selection{
+    display: flex;
+    flex-direction: row;
+    margin-inline: 10%;
+    background-color: rgb(249, 249, 249);
+    align-items: center;
+    padding-block: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px grey;
+}
+
+.product-selection label{
+    width: 80%;
+    padding-left: 10%;
+}
+
+.product-selection input{
+    width: 20px;
+    height: 20px;
+}
+
+.product-addon{
+    width: 10%;
+    padding-left: 10%;
+}
+
+.product-addon-price{
+    width: 50%;
+    padding-left: 20%;
+    color: green;
+    font-weight: bold;
+
+}
+
+.order-instruction-field{
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 1px 1px 1px rgb(214, 214, 214);
+    padding-inline: 10px;
+    padding-block: 30px;
+    font-size: 18px;
+}
+
+.product-order-total{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(232, 232, 232);
+    padding-block: 30px;
+    padding-inline: 10%;
+    column-gap: 10%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px grey;
+    align-items: center;
+}
+
+.amt-selector{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50%;
+    align-items: center;
+    margin-inline: 10%;
+}
+
+.product-order-total label{
+   font-size: 24px;
+}
+
+.product-order-total button{
+    background-color: green;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px grey;
+}
+
+.product-order-total button:hover{
+    background-color: rgb(0, 84, 0);
+}
+
+
+.amt-selector label{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.amt-indicator {
+    
+    background-color: white;
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.order-price{
+    color: green;
+    font-weight: bold;
+    font-size: 32px;
+}

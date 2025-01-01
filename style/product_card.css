@@ -1,0 +1,83 @@
+.series-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.series-header{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50%;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 0px;   
+
+}
+
+.series-header:hover{
+   cursor: pointer;
+   
+}
+
+
+.series-header img{
+    height: 30px;
+
+}
+
+.series-header h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
+}
+
+
+.product-card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 3%;
+    width: 80%;
+    padding-block: 30px;
+}
+
+.product-card{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    padding-bottom: 20px;
+    
+}
+
+.product-card:hover{
+    cursor: pointer;
+    background-color: rgb(211, 245, 155);
+    border-radius: 20px;
+    
+}
+
+
+.product-card img{
+    width:  inherit;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.product-card h3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px;
+    margin: 0px;
+    margin-left: 5%;
+}
+
+.product-card p{
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+    margin: 0px;
+    margin-left: 5%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+

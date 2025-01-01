@@ -1,0 +1,95 @@
+
+
+.footer-container{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    margin: 0px;
+    width: 100%;
+    padding-block: 30px;
+    padding-left: 20%;
+    margin-top: 100px;
+}
+
+.footer-container p{
+    margin: 0px;
+}
+
+.footer-container a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-container a:hover{
+    color: rgb(234, 30, 99);
+}
+
+.footer-container svg{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 100px;
+}
+
+.footer-container svg:hover{
+    background-color: rgb(234, 30, 99);;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+    align-content: center;
+    align-items: start;
+}
+
+.footer-external-list{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+    margin-block: 30px;
+}
+
+.footer-info{
+    display: flex;
+    flex-direction: column;
+    margin-inline: 5%;
+}
+
+.footer-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 5%;
+    margin-bottom: 30px;
+}
+
+.footer-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer-copy{
+    padding-left: 30%;
+    font-size: 20px;
+}
+
+.footer-link{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-contact-list{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10%;
+    margin-block: 30px;
+}
+
