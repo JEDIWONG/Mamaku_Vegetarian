@@ -94,7 +94,7 @@
             <p>RM <?php echo number_format($total_price, 2); ?></p>
         </section>
 
-        <button class="checkout-btn">
+        <button class="checkout-btn" onclick="location.href ='checkout.php'">
             Checkout
         </button>
 

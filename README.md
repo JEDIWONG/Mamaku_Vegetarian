@@ -1,1 +1,1 @@
-"# Mamaku_Vegetarian" 
+Mamaku_Vegetarian
