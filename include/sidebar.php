@@ -1,11 +1,11 @@
 <?php
-    //Check users log in session. 
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     $fname = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : "Guest";
     $lname = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : "";
 ?>
-
 
 <div class="sidebar-container">
     <div class="sidebar-logo">

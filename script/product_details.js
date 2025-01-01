@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let quantity = 1; // Initial quantity
     const basePrice = parseFloat(productInfo.getAttribute("data-product-price")); // Base product price
-
+    
     // Update the total price
     const updateTotalPrice = () => {
         const selectedOptionPrice = 0; // Option pricing can be added here if necessary
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } catch (error) {
             console.error("Error adding to cart:", error);
-            alert("An error occurred. Please try again.");
+            alert("An error occured. Please try again.");
         }
     });
 

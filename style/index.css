@@ -2,11 +2,11 @@ body{
     padding: 0px;
     margin: 0px;
     overflow-y: scroll;
-   ;
 }
 
 main{
     margin-left: 25%;
+    margin-block: 50px;
 }
 
 .logout-btn{
@@ -24,6 +24,7 @@ main{
 .logout-btn:hover{
     background-color: rgb(119, 14, 0);
 }
+
 
 
 

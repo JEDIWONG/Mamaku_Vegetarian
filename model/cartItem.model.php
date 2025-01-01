@@ -21,9 +21,11 @@
         }
 
         public function getByCartId($cartId) {
-            $sql = "SELECT * FROM cart_item WHERE cart_id = {$cartId}";
+            $sql = "SELECT * FROM cart_item WHERE cart_idd = {$cartId}";
+        
             return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
         }
     }
+    
 
 ?>
