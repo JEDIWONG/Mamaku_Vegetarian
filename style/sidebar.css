@@ -8,6 +8,7 @@
     padding-inline: 1%;
     height: 100%;
     z-index: 1000;
+    
 }
 
 .sidebar-container svg{
@@ -48,6 +49,7 @@
     text-decoration: none;
     color: inherit;
 }
+
 
 .sidebar-nav li{
     display: flex;
