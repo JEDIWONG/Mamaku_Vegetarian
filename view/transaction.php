@@ -13,12 +13,12 @@ $conn = $db->conn;
 $transactions = [];
 
 try {
-    // Query all transactions for the logged-in user
+    // Query all transactions for the logged-in user with total_amount
     $stmt = $conn->prepare("
         SELECT 
             t.transaction_id, 
-            t.order_id, 
             t.payment_method, 
+            o.total_amount, 
             DATE(t.transaction_date) AS transaction_date, 
             TIME(t.transaction_date) AS transaction_time 
         FROM transaction t
@@ -42,51 +42,51 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction | Mamaku Vegetarian</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Transaction | Mamaku Vegetarian</title>
 
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/sidebar.css">
-    <link rel="stylesheet" href="../style/transaction.css">
+        <link rel="stylesheet" href="../style/index.css">
+        <link rel="stylesheet" href="../style/sidebar.css">
+        <link rel="stylesheet" href="../style/transaction.css">
 
-</head>
-<body>
+    </head>
+    <body>
 
-    <?php include "../include/sidebar.php" ?>
+        <?php include "../include/sidebar.php" ?>
 
-    <main>
-        <h1>Transaction History</h1>
-        <table class="transaction-table">
-            <thead>
-                <tr class="transaction-header">
-                    <th>Transaction ID</th>
-                    <th>Order ID</th>
-                    <th>Payment Method</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($transactions)): ?>
-                    <?php foreach ($transactions as $transaction): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($transaction['transaction_id']); ?></td>
-                            <td><?php echo htmlspecialchars($transaction['order_id']); ?></td>
-                            <td><?php echo htmlspecialchars($transaction['payment_method']); ?></td>
-                            <td><?php echo htmlspecialchars($transaction['transaction_date']); ?></td>
-                            <td><?php echo htmlspecialchars($transaction['transaction_time']); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="5">No transactions found.</td>
+        <main>
+            <h1>Transaction History</h1>
+            <table class="transaction-table">
+                <thead>
+                    <tr class="transaction-header">
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Payment Method</th>
+                        <th>Total Amount (RM)</th>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </main>
-    
-</body>
+                </thead>
+                <tbody class="transaction-row">
+                    <?php if (!empty($transactions)): ?>
+                        <?php foreach ($transactions as $transaction): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($transaction['transaction_id']); ?></td>
+                                <td><?php echo htmlspecialchars($transaction['transaction_date']); ?></td>
+                                <td><?php echo htmlspecialchars($transaction['transaction_time']); ?></td>
+                                <td><?php echo htmlspecialchars($transaction['payment_method']); ?></td>
+                                <td><?php echo number_format($transaction['total_amount'], 2); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5">No transactions found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </main>
+        
+    </body>
 </html>

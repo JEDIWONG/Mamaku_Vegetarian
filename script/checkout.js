@@ -57,23 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Add click event to the "Next" button
     nextButton.addEventListener("click", () => {
         if (!selectedPaymentMethod) {
             alert("Please select a payment method.");
             return;
         }
-
+    
         if (selectedPaymentMethod === "Cashless" && !selectedCashlessMethod) {
             alert("Please select a cashless payment method.");
             return;
         }
-
+    
         // Proceed to the backend for checkout
-        proceedToCheckout(selectedPaymentMethod, selectedCashlessMethod);
+        proceedToCheckout(selectedPaymentMethod, selectedCashlessMethod || null);
     });
-
-    // Function to proceed to the backend for checkout
+    
     async function proceedToCheckout(paymentMethod, cashlessMethod) {
         try {
             const response = await fetch("../controller/checkout.php", {
@@ -83,14 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 body: JSON.stringify({
                     payment_method: paymentMethod,
-                    cashless_method: cashlessMethod,
+                    cashless_method: cashlessMethod, // Null if "Cash" is selected
                 }),
             });
-
+    
             const result = await response.json();
             if (result.status === "success") {
                 alert("Checkout successful!");
-                window.location.href = "../view/result.php"; 
+                window.location.href = "../view/result.php";
             } else {
                 alert(result.message || "Checkout failed. Please try again.");
             }
@@ -99,4 +97,5 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("An error occurred. Please try again.");
         }
     }
+    
 });

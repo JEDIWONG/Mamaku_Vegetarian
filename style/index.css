@@ -6,7 +6,8 @@ body{
 
 main{
     margin-left: 25%;
-    margin-block: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .logout-btn{

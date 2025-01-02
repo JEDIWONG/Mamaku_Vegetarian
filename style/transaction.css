@@ -1,5 +1,28 @@
-.transaction-header th {
-    width: 20%;
-    padding-inline: 10%;
+.transaction-table{
+    margin-inline: 5%;
+}
+
+.transaction-header th{
+    width: 300px; 
+    padding-inline: 3%;
+    padding-block: 10px;
+    font-size: 12px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.transaction-row{
+    width: 300px; 
+    padding-inline: 5%;
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.transaction-row :hover{
+    background-color: rgb(242, 242, 242);
 }
 

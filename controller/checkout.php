@@ -121,6 +121,16 @@
                 $stmt->execute();
             }
 
+                    // Check required fields
+            if (!$payment_method) {
+                echo json_encode(["status" => "error", "message" => "Payment method is required."]);
+                exit;
+            }
+            if ($payment_method === "Cashless" && !$cashless_method) {
+                echo json_encode(["status" => "error", "message" => "Cashless payment method is required."]);
+                exit;
+            }
+
             // Create a transaction
             $stmt = $conn->prepare("
                 INSERT INTO transaction (order_id, payment_method, payment_status) 
@@ -129,18 +139,12 @@
             if (!$stmt) {
                 throw new Exception("Prepare failed: " . $conn->error);
             }
-            $stmt->bind_param("is", $order_id, $payment_method);
+            $transaction_payment_method = $cashless_method ? "$payment_method ($cashless_method)" : $payment_method;
+            $stmt->bind_param("is", $order_id, $transaction_payment_method);
             $stmt->execute();
-            $transaction_id = $conn->insert_id;
+            $transaction_id = $stmt->insert_id;
 
-            // Clear cart after successful order placement
-            $stmt = $conn->prepare("DELETE FROM cart_item WHERE cart_id = ?");
-            if (!$stmt) {
-                throw new Exception("Prepare failed: " . $conn->error);
-            }
-            $stmt->bind_param("i", $cart_id);
-            $stmt->execute();
-
+            // Respond with success
             echo json_encode([
                 "status" => "success",
                 "message" => "Order and transaction created successfully.",
@@ -148,6 +152,7 @@
                 "transaction_id" => $transaction_id,
                 "daily_order_no" => $daily_order_no,
             ]);
+
         } else {
             echo json_encode(["status" => "error", "message" => "Cart not found."]);
         }
