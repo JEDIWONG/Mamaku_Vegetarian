@@ -152,6 +152,8 @@
             $stmt->bind_param("i", $cart_id);
             $stmt->execute();
 
+        
+
             // Respond with success
             echo json_encode([
                 "status" => "success",

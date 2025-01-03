@@ -16,8 +16,6 @@
 <body>
 
     <?php
-    // Include database connection
-    include '../view/db_connect.php';
 
     // Fetch user data from the database
     $sql = "SELECT * FROM user WHERE user_id = 1"; // Replace '1' with the dynamic user ID if applicable
