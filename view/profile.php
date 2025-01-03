@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="stylesheet" href="../style/profile.css">
+    <link rel="stylesheet" href="../style/footer.css">
     <script src="../script/edit_name.js"></script>
 
 
