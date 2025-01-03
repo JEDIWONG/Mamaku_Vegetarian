@@ -1,3 +1,37 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: left; /* Centers the content horizontally */
+  margin: 0; /* Centers the container itself */
+  max-width: 900px; /* Optional: Limit the width of the content */
+}
+
+.profile-info {
+  margin: 20px; /* Centers the profile box on the page */
+  padding: 20px; /* Adds spacing inside the box */
+  border: 1px solid #ddd; /* Optional: Adds a border for clarity */
+  border-radius: 10px; /* Optional: Rounded corners */
+  max-width: 700px; /* Limit the width */
+  background-color: #fff; /* Ensure the background is clean */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+      width: 100%; /* Full width for smaller screens */
+      position: relative; /* Makes it stack above content */
+  }
+
+  .main-content {
+      margin-left: 0; /* No margin when the sidebar stacks */
+      padding: 10px; /* Add padding for mobile view */
+  }
+
+  .profile-info {
+      width: 100%; /* Allow the box to take full width */
+  }
+}
+
 
 .advanced-settings .change-password {
     background-color: #007bff;
@@ -41,6 +75,22 @@
     border-radius: 50%;
     margin-right: 20px;
 }
+
+.contact-info label {
+  display: block;
+  margin-top: 10px;
+}
+
+.contact-info input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e9ecef;
+}
+
+
 
 body {
     margin: 0;
