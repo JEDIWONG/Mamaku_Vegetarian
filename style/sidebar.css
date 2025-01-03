@@ -23,7 +23,7 @@
     flex-direction: row;
     column-gap: 5%;
     margin-block: 20px;
-    
+    cursor: pointer;
 }
 
 .sidebar-logo h3{
@@ -73,6 +73,18 @@
 .sidebar-container button{
     margin-block:50px;
     margin-left: 30%;
+}
+
+.login-btn{
+    border: none;
+    background-color: rgb(192, 52, 33);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-inline: 10%;
+    padding-block: 10px;
+    font-weight: bold;
+    box-shadow: 0px 0px 1px grey;
 }
 
 .sidebar-greet{
