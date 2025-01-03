@@ -1,4 +1,137 @@
-.dashboard-page-container{
+/* Order Card Styles */
+.order-card {
+    background: white;
+    width: 200px; /* Increased horizontal length */
+    padding: 20px 30px; /* Adjust padding for more horizontal space */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px; /* Increased space between icon and text */
+}
+
+.order-icon img {
+    background: #FBE0C4;
+    width: 50px;
+    height: 50px; /* Increased icon size */
+    margin-bottom: 10px;
     position: relative;
-    left: 25%;
+    margin-top: -40px;
+}
+
+.order-icon span {
+    align-self: flex-end; /* Aligns "Order" to the right */
+    font-size: 1.2rem; /* Adjust font size */
+    margin-bottom: 5px; /* Adds spacing */
+    font-weight: bold; /* Optional: Makes the text bold */
+    margin-left: auto;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 75%; /* Ensures it takes the full width of the parent container */
+    padding: 0 15px; /* Adds padding to the left and right to fit the width */
+}
+
+.order-name {
+    font-size: 2rem; /* Increased order count size */
+    font-weight: normal;
+    margin-left: auto;
+    margin-bottom: 5px;
+    color: #999;
+}
+
+.order-count {
+    font-size: 2rem; /* Increased order count size */
+    font-weight: bold;
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+
+.order-period {
+    color: rgb(0, 0, 0);
+    font-size: 1rem; /* Increased font size for period */
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.order-period::before {
+    content: '▼';
+    font-size: 1.2em; /* Increased size of arrow */
+    margin-right: 5px;
+    color: rgb(0, 0, 0);
+}
+
+/* Menu Cards Container */
+.menu-cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Menu Card Styles */
+.menu-card {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card h2 {
+    font-size: 2rem; /* Increased size of menu card title */
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.menu-card > img {
+    width: 100%;
+    height: 250px; /* Adjusted image size to be more prominent */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.menu-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-name {
+    font-size: 1.2rem; /* Increased font size for the menu name */
+    color: #333;
+    font-weight: bold;
+}
+
+.update-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.update-info img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+}
+
+.menu-card hr {
+    margin: 10px 0; /* Gray line between the menu name and time */
+    border: 0;
+    border-top: 1px solid #ddd;
 }

@@ -8,14 +8,11 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="stylesheet" href="../style/product_card.css"> 
-    <link rel="stylesheet" href="../style/searchpanel.css"> 
 </head>
 
 <body>
-
     <?php include "../include/sidebar.php"?>
     <main>
-        <?php include "../include/searchpanel.php" ?>
         <?php include "../include/product_list.php" ?>
     </main>
 
