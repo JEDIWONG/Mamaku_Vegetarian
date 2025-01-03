@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="stylesheet" href="../style/product_card.css"> 
+    <link rel="stylesheet" href="../style/searchpanel.css"> 
+    <link rel="stylesheet" href="../style/footer.css"> 
 </head>
 
 <body>
     <?php include "../include/sidebar.php"?>
     <main>
         <?php include "../include/product_list.php" ?>
+        
     </main>
 
+    <?php include "../include/footer.php" ?>
 </body>
 </html>

@@ -58,6 +58,26 @@ $conn->close();
 
     <main>
         <h1>Transaction History</h1>
+
+        <form method="GET" class="sorting-form">
+            <label for="order">Sort by:</label>
+            <select name="order" id="order">
+                <option value="transaction_date" <?php echo ($orderColumn === 'transaction_date') ? 'selected' : ''; ?>>Date</option>
+                <option value="transaction_time" <?php echo ($orderColumn === 'transaction_time') ? 'selected' : ''; ?>>Time</option>
+                <option value="payment_method" <?php echo ($orderColumn === 'payment_method') ? 'selected' : ''; ?>>Payment Method</option>
+                <option value="total_amount" <?php echo ($orderColumn === 'total_amount') ? 'selected' : ''; ?>>Total Amount</option>
+            </select>
+
+            <label for="direction">Order:</label>
+
+            <select name="direction" id="direction">
+                <option value="ASC" <?php echo ($orderDirection === 'ASC') ? 'selected' : ''; ?>>Ascending</option>
+                <option value="DESC" <?php echo ($orderDirection === 'DESC') ? 'selected' : ''; ?>>Descending</option>
+            </select>
+
+            <button type="submit">Sort</button>
+        </form>
+
         <table class="transaction-table">
             <thead>
                 <tr class="transaction-header">
