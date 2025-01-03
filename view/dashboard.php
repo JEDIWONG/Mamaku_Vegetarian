@@ -1,16 +1,87 @@
 <?php
-// Simulating data fetch from a database
-$orderCount = 6; 
-$favoriteMenu = [
-    'name' => 'Fried Enoki Mushroom',
-    'image' => '../assets/images/fried_enoki_mushroom.png',
-    'lastUpdated' => '4 minutes ago'
-];
-$topSellingMenu = [
-    'name' => 'Fried Enoki Mushroom',
-    'image' => '../assets/images/fried_enoki_mushroom.png',
-    'lastUpdated' => '4 minutes ago'
-];
+
+    include "../model/database_model.php"; 
+
+    session_start(); // Start the session
+
+    $conn = new Database();
+
+    // Fetch data based on the logged-in user's ID
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+
+        // Query to get the order count for the last 7 days
+        $orderCountQuery = "
+            SELECT COUNT(*) AS order_count 
+            FROM `order` 
+            WHERE user_id = $user_id 
+            AND created_at >= NOW() - INTERVAL 7 DAY
+        ";
+
+        $orderCountResult = $conn->query($orderCountQuery);
+        $orderCount = $orderCountResult->fetch_assoc()['order_count'];
+
+        // Query to get the favorite menu for the user
+        $favoriteMenuQuery = "
+            SELECT 
+                p.name AS item_name, 
+                p.image, 
+                MAX(oi.created_at) AS last_updated 
+            FROM 
+                order_item oi
+            JOIN 
+                `order` o ON oi.order_id = o.order_id
+            JOIN 
+                product p ON oi.item_name = p.name
+            WHERE 
+                o.user_id = $user_id 
+            GROUP BY 
+                p.name 
+            ORDER BY 
+                COUNT(*) DESC 
+            LIMIT 1;
+        ";
+
+        $favoriteMenuResult = $conn->query($favoriteMenuQuery);
+        $favoriteMenu = $favoriteMenuResult->fetch_assoc();
+
+        // Query to get the top-selling menu for the user
+        $topSellingMenuQuery = "
+            SELECT 
+                p.name AS item_name, 
+                p.image, 
+                MAX(oi.created_at) AS last_updated 
+            FROM 
+                order_item oi
+            JOIN 
+                `order` o ON oi.order_id = o.order_id
+            JOIN 
+                product p ON oi.item_name = p.name
+            WHERE 
+                o.user_id = $user_id 
+            GROUP BY 
+                p.name 
+            ORDER BY 
+                SUM(oi.quantity) DESC 
+            LIMIT 1;
+        ";
+        $topSellingMenuResult = $conn->query($topSellingMenuQuery);
+        $topSellingMenu = $topSellingMenuResult->fetch_assoc();
+    } else {
+        // Default values if the user is not logged in
+        $orderCount = 0;
+        $favoriteMenu = [
+            'item_name' => 'No favorite menu',
+            'image' => '../assets/images/placeholder.png',
+            'last_updated' => 'N/A'
+        ];
+        $topSellingMenu = [
+            'item_name' => 'No top-selling menu',
+            'image' => '../assets/images/placeholder.png',
+            'last_updated' => 'N/A'
+        ];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +93,7 @@ $topSellingMenu = [
 
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/sidebar.css">
+    <link rel="stylesheet" href="../style/searchpanel.css">
     <link rel="stylesheet" href="../style/dashboard.css"> 
 </head>
 <body>
@@ -32,50 +104,52 @@ $topSellingMenu = [
     <!-- Main Dashboard Content -->
     <main class="dashboard-container">
         
+        <?php include "../include/searchpanel.php" ?>
+
         <!-- Order Summary Card -->
-        <div class="order-card">
+        <section class="order-card">
             <div class="order-icon">
                 <img src="../assets/icons/order_box.svg" alt="Order Icon">
             </div>
             <div class="order-info">
-            <span class ="order-name">Order</span>
+                <span class="order-name">Order</span>
                 <span class="order-count"><?php echo $orderCount; ?></span>
                 <span class="order-period">Last 7 Days</span>
             </div>
-        </div>
+        </section>
 
         <!-- Menu Cards Container -->
-        <div class="menu-cards-container">
+        <section class="menu-cards-container">
 
             <!-- Favorite Menu Card -->
             <div class="menu-card">
-                <img src="<?php echo $favoriteMenu['image']; ?>" alt="<?php echo $favoriteMenu['name']; ?>">
+                <img src="<?php echo "../assets/images/".$favoriteMenu['image']; ?>" alt="<?php echo $favoriteMenu['item_name']; ?>">
                 <h2>Your Favourite Menu</h2>
                 <div class="menu-info">
-                    <span class="menu-name"><?php echo $favoriteMenu['name']; ?></span>
+                    <span class="menu-name"><?php echo $favoriteMenu['item_name']; ?></span>
                     <hr> <!-- Gray line separating name from time -->
                     <div class="update-info">
                         <img src="../assets/icons/clock.svg" alt="Clock">
-                        <span>updated <?php echo $favoriteMenu['lastUpdated']; ?></span>
+                        <span>updated <?php echo $favoriteMenu['last_updated']; ?></span>
                     </div>
                 </div>
             </div>
 
             <!-- Top Selling Menu Card -->
             <div class="menu-card">
-                <img src="<?php echo $topSellingMenu['image']; ?>" alt="<?php echo $topSellingMenu['name']; ?>">
+                <img src="<?php echo "../assets/images/".$topSellingMenu['image']; ?>" alt="<?php echo $topSellingMenu['item_name']; ?>">
                 <h2>Top Selling Menu</h2>
                 <div class="menu-info">
-                    <span class="menu-name"><?php echo $topSellingMenu['name']; ?></span>
+                    <span class="menu-name"><?php echo $topSellingMenu['item_name']; ?></span>
                     <hr> <!-- Gray line separating name from time -->
                     <div class="update-info">
                         <img src="../assets/icons/clock.svg" alt="Clock">
-                        <span>updated <?php echo $topSellingMenu['lastUpdated']; ?></span>
+                        <span>updated <?php echo $topSellingMenu['last_updated']; ?></span>
                     </div>
                 </div>
             </div>
 
-        </div>
+        </section>
     </main>
 
 </body>
