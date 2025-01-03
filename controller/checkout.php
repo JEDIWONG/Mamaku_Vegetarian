@@ -98,6 +98,9 @@
             $stmt->execute();
             $order_id = $conn->insert_id;
 
+            // Set the order ID in the session
+            $_SESSION['order_id'] = $order_id; // <-- Add this line
+
             // Insert into `order_item` table
             $stmt = $conn->prepare("
                 INSERT INTO order_item (order_id, item_name, option_name, addon_name, remarks, quantity, price) 
@@ -121,7 +124,7 @@
                 $stmt->execute();
             }
 
-                    // Check required fields
+            // Check required fields
             if (!$payment_method) {
                 echo json_encode(["status" => "error", "message" => "Payment method is required."]);
                 exit;
@@ -151,8 +154,6 @@
             }
             $stmt->bind_param("i", $cart_id);
             $stmt->execute();
-
-        
 
             // Respond with success
             echo json_encode([

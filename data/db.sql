@@ -83,6 +83,7 @@ CREATE TABLE `order` (
     user_id INT,
     total_amount DECIMAL(10, 2) NOT NULL,
     status ENUM('Pending', 'Processing', 'Completed', 'Cancelled') DEFAULT 'Pending',
+    daily_order_no INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
