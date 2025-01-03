@@ -34,3 +34,36 @@
     background-color: rgb(242, 242, 242);
 }
 
+.sorting-form{
+    margin-block: 50px  ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sorting-form label{
+    margin-left: 5%;
+    margin-right: 3%;
+}
+
+.sorting-form select{
+    border-radius: 10px;
+    border: 1px solid rgb(232, 232, 232);
+    padding: 10px;
+}
+
+.sorting-form button{
+    margin-left: 5%;
+    border: none;
+    background-color: rgb(255, 0, 111);
+    color: white;
+    font-size: 15px;
+    padding-block: 5px;
+    padding-inline: 3%;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0px 0px 3px grey;
+}
+
+

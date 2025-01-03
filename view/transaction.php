@@ -73,7 +73,6 @@ $conn->close();
     <main>
         <h1>Transaction History</h1>
 
-        <!-- Sorting Dropdown -->
         <form method="GET" class="sorting-form">
             <label for="order">Sort by:</label>
             <select name="order" id="order">
@@ -84,6 +83,7 @@ $conn->close();
             </select>
 
             <label for="direction">Order:</label>
+
             <select name="direction" id="direction">
                 <option value="ASC" <?php echo ($orderDirection === 'ASC') ? 'selected' : ''; ?>>Ascending</option>
                 <option value="DESC" <?php echo ($orderDirection === 'DESC') ? 'selected' : ''; ?>>Descending</option>

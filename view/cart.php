@@ -61,12 +61,14 @@
 
         <link rel="stylesheet" href="../style/index.css">
         <link rel="stylesheet" href="../style/sidebar.css">
+        <link rel="stylesheet" href="../style/searchpanel.css">
         <link rel="stylesheet" href="../style/cart.css"> 
     </head>
 
     <body>
         <?php include "../include/sidebar.php"; ?>
         <main>
+            <?php include "../include/searchpanel.php"; ?>
             <section class="cart-list-container">
                 <?php if (!empty($cart_items)): ?>
                     <?php foreach ($cart_items as $item): ?>
