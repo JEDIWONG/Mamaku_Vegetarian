@@ -144,6 +144,14 @@
             $stmt->execute();
             $transaction_id = $stmt->insert_id;
 
+            // Clear the user's cart after checkout
+            $stmt = $conn->prepare("DELETE FROM cart_item WHERE cart_id = ?");
+            if (!$stmt) {
+                throw new Exception("Prepare failed: " . $conn->error);
+            }
+            $stmt->bind_param("i", $cart_id);
+            $stmt->execute();
+
             // Respond with success
             echo json_encode([
                 "status" => "success",
