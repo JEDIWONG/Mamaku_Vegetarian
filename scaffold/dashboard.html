@@ -3,16 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mamaku Vegetarian Dashboard</title>
+    
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/sidebar.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
 </head>
 <body>
+    <main class="dashboard-container">
+        <!-- Order Summary Card -->
+        <div class="order-card">
+            <div class="order-icon">
+                <img src="../assets/images/order_box.png" alt="Order Icon">
+            </div>
+            <div class="order-info">
+                <span class ="order-name">Order</span>
+                <span class="order-count">6</span>
+                <span class="order-period">Last 7 Days</span>
+            </div>
+        </div>
 
-    <main class="dashboard-page-container">
-        <h1>
-            Dashboard
-        </h1>
-        
+        <!-- Menu Cards Container -->
+        <div class="menu-cards-container">
+            <!-- Favorite Menu Card -->
+            <div class="menu-card">
+                <h2>Your Favourite Menu</h2>
+                <img src="../assets/images/fried_enoki_mushroom.png" alt="Fried Enoki Mushroom">
+                <div class="menu-info">
+                    <span class="menu-name">Fried Enoki Mushroom</span>
+                    <div class="update-info">
+                        <img src="../assets/images/clock.png" alt="Clock">
+                        <span>updated 4 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Selling Menu Card -->
+            <div class="menu-card">
+                <h2>Top Selling Menu</h2>
+                <img src="../assets/images/fried_enoki_mushroom.png" alt="Fried Enoki Mushroom">
+                <div class="menu-info">
+                    <span class="menu-name">Fried Enoki Mushroom</span>
+                    <div class="update-info">
+                        <img src="../assets/images/clock.png" alt="Clock">
+                        <span>updated 4 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    
+
+    <script src="../script/dashboard.js"></script>
 </body>
 </html>
