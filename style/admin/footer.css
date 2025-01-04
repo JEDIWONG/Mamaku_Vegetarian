@@ -1,0 +1,72 @@
+.footer{
+    background-color: black;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: white;
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: none;
+    position: absolute;
+}
+.ctc
+{
+    list-style: none;
+    color: white;
+    position: relative;
+    position: absolute;
+    bottom: 30%;
+    left: 75%;
+}
+.btm-footer
+{
+    bottom: 0%;
+    left: 40%;
+    position: relative;
+    position: absolute;
+}
+.logo-footer
+{
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+}
+.left-info{
+    margin-left: 40px;
+    margin-top: 0;
+}
+.left-info p.title-footer{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.left-info p{
+    font-size: 14px;
+}
+
+.left-info h5{
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.ctc-title p{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.ctc li{
+   display: inline;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+.ctc li a{
+    color:aliceblue;
+}
+
+.ctc li a:hover
+{
+    background-color: blueviolet;
+    color: azure;
+    font-size: 20px;
+    position: relative;
+}
