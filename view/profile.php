@@ -9,20 +9,37 @@
     <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="stylesheet" href="../style/profile.css">
     <link rel="stylesheet" href="../style/footer.css">
-    <script src="../script/edit_name.js"></script>
+  
 
 
 </head>
 <body>
 
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.profile; // e.g., "/profile"
+    const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+    navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+            link.parentElement.classList.add("active"); // Add class to the <li> element
+        }
+    });
+});
+
+</script>
+    
     <?php
 
     include "../model/database_model.php";
 
     $conn = new Database();
     // Fetch user data from the database
-    $sql = "SELECT * FROM user WHERE user_id = 1"; // Replace '1' with the dynamic user ID if applicable
+    $sql = "SELECT * FROM user WHERE user_id = 3"; // Replace '1' with the dynamic user ID if applicable
     $result = $conn->query($sql);
+
+  
+
 
     if ($result->num_rows > 0) {
         // Fetch associative array
@@ -76,6 +93,11 @@
                 <button class="edit-btn" onclick="openPopup()">Edit Name</button>
             </div>
 
+            <div id="user-data"
+     data-first-name="<?php echo htmlspecialchars($first_name); ?>"
+     data-last-name="<?php echo htmlspecialchars($last_name); ?>">
+        </div>
+
             <!-- test -->
     <div class="overlay" id="overlay" onclick="closePopup()"></div>
         <div class="popup" id="popup">
@@ -86,110 +108,35 @@
         <button onclick="closePopup()">Cancel</button>
     </div>
 
-            <script>
-   first_name = "<?php echo htmlspecialchars($first_name); ?>";
-    last_name = "<?php echo htmlspecialchars($last_name); ?>";
-
-
-  function openPopup() {
-
-   // const fullName = document.getElementById('full-name').textContent.split(' ');
-    document.getElementById('first-name').value = first_name;
-    document.getElementById('last-name').value = last_name;
-
-    document.getElementById('popup').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
-  }
-
-  function closePopup() {
-    document.getElementById('popup').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-  }
-
-  function saveName() {
-    const firstName = document.getElementById('first-name').value.trim();
-    const lastName = document.getElementById('last-name').value.trim();
-
-    fetch('update_name.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-      // Update both the displayed name and the JavaScript variables
-      document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
-      // Update the JavaScript variables for future edits
-      first_name = firstName;
-      last_name = lastName;
-      closePopup();
-      } else {
-        alert('Failed to update name. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    });
-  }
-</script>
-            <!-- test -->
-
+            <script> </script>
             <div class="contact-info">
                 <h2>Contact Information</h2>
                 <label>Email:</label>
                 <input type="email" id= "email-field" value="<?php echo htmlspecialchars($email); ?>" edit>
                 <label>Contact Number:</label>
-                <input type="text" value="<?php echo htmlspecialchars($contact_number); ?>" edit>
+                <input type="text" id= "phone-field" value="<?php echo htmlspecialchars($contact_number); ?>" edit>
             </div>
 
 
 <!-- Floating Message -->
-<div id="floating-message" style="display: none;">Email address updated</div>
-        
-<script>
-    // Add event listener for when the email field loses focus
-document.getElementById('email-field').addEventListener('blur', function() {
-  
-    const email = document.getElementById('email-field').value.trim();
+            <div id="floating-message" style="display: none;">Email address updated</div>
+            
+            <script src="../script/edit_function.js"></script>
 
-  if (email) {
-    // Send the updated email to the server
-    fetch('update_email.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); 
-      if (data.success) {
-        // Show the floating message
-        const message = document.getElementById('floating-message');
-        message.style.display = 'block';
-        
-        // Hide the message after 3 seconds
-        setTimeout(() => {
-          message.style.display = 'none';
-        }, 3000);
-      } else {
-        alert('Failed to update email. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    });
-  }
-});
-
-</script>
             <div class="advanced-settings">
                 <h2>Advanced Settings</h2>
-                <button class="change-password">Change Password</button>
-                <button class="delete-account">Delete Account</button>
-            </div>
+                <button class="change-password"onclick="changePassword()">Change Password</button>
+                <button class="delete-account" onclick="confirmDeleteAccount()">Delete Account</button>
+</div>
+
+                <div class="overlay" id="delete-overlay" onclick="closeDeletePopup()"></div>
+                <div class="popup" id="delete-popup">
+                    <h2>Are you sure you want to delete your account?</h2>
+                    <p>This action cannot be undone.</p>
+                    <button onclick="deleteAccount()">Confirm</button>
+                    <button onclick="closeDeletePopup()">Cancel</button>
+                </div>
+
         </section>
     </div>
 
