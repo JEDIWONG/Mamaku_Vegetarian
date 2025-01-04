@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+    background-image: url(https://wallpapers.com/images/hd/pastel-yellow-cream-background-iz570fvika661m14.jpg);
+}
+.inside-container a,p,b
+{
+    text-decoration: none;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.inside-container a:hover
+{
+    background-color: white;
+    color:rgb(26, 36, 36);
+}
+.inside-container
+{
+    background-image: url(https://images4.alphacoders.com/132/1323882.png);
+    position: absolute;
+    width: 1200px;
+    height: 100%;
+    background-repeat: no-repeat;
+    left: 0px;
+    top: 0px; 
+}
+
+.left-container
+{
+    top: auto;
+    margin-top: 250px;
+    margin-left: 340px;
+    margin-right: 200px;
+    padding: 25px;
+    text-align: center;
+    float: left;
+}
+.right-container
+{
+    float: left;
+    margin-left: 1000px;
+    margin-top: -450px;
+    background-color: bisque;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 10px;
+}
+
+.right-container-login
+{
+    float: left;
+    margin-left: 1000px;
+    margin-top: -250px;
+    background-color: bisque;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 10px;
+}
+.left-container img.logo
+{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.left-container p.qoutation
+{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.left-container q.qoutation
+{
+    font-family: 'Inter';
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color: antiquewhite;
+}

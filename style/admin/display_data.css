@@ -1,0 +1,109 @@
+.info-register
+{
+    position: absolute;
+    top: 15%;
+    left: 1cqi;
+    width: 18cqi;
+    height: 9cqi;
+    background-color: #F7F9FA;
+    border-radius: 7px;
+}
+.icon-users
+{
+    width: 5cqi;
+    height: 5cqi;
+    margin-top: -1.8cqi;
+    margin-left: 1.2cqi;
+    background-color: #32BEA6;
+    border-radius: 10px;
+}
+.icon-users i
+{
+    color: #fff;
+    font-size: 2.5cqi;
+    margin: 1.2cqi 1cqi;
+    font-weight: none;
+}
+.info-register h4
+{
+    margin-left: 7.5cqi;
+    margin-top: -2.5cqi;
+    color:#9D9D9D ;
+    font-family: 'Inter';
+    font-size: 2cqi;
+}
+.info-register p{
+    margin-top: -0.5cqi;
+    margin-left: 10cqi;
+    font-family: 'Inter';
+    font-size: 1.8cqi;
+}
+.table-user
+{
+    position: absolute;
+    width: 76.5cqi;
+    height: 20cqi;
+    top: 15cqi;
+    left: 1cqi;
+    background: #F7F9FA;
+    border-radius: 10px;
+
+}
+.display-data-users
+{
+    margin-top: 1cqi;
+    margin-left: 0.8cqi;
+    width: 76cqi;
+    height: 15cqi;
+}
+.display-data-users table
+{
+    width: 100%;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.table-user h4{
+    margin-left: 1cqi; margin-top: 0.5cqi;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.4cqi;
+}
+.right-search-user{
+    position: absolute;
+    right: 1cqi;
+    top:1cqi;
+}
+.user-search{
+    margin-right: 2cqi;
+    border: none;
+    border-radius: 10px;
+    padding-left: 1cqi;
+
+}
+.btn-search-user
+{
+    color: #9D9D9D ;
+    border: none;
+    background-color:transparent;
+    margin-left: -3cqi; margin-right: 2cqi;
+    padding-left: 0.5cqi; padding-right: 0.5cqi;
+}
+.right-search-user select
+{
+    padding-top: 0.2cqi;padding-bottom: 0.2cqi;
+    padding-left: 0.5cqi;padding-right: 0.5cqi;
+    background: #D9D9D9;
+    border-radius: 7px;
+    border: none;
+}
+
+/*for record.php css style table transaction record*/
+.table-record
+{
+    margin-top: 3cqi;
+    width: 79cqi;
+    height: 30cqi;
+    background: #F7F9FA;
+    border-radius: 10px;
+    border: 1px solid black;
+}

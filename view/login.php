@@ -35,8 +35,14 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['first_name'] = $user['first_name'];
                 $_SESSION['last_name'] = $user['last_name'];
+                $_SESSION['role'] = $user['role']; // Store the user's role in the session
 
-                header("Location: dashboard.php");
+                // Redirect based on role
+                if ($user['role'] == 'Admin') {
+                    header("Location: ./admin/dashboard.php");
+                } else {
+                    header("Location: dashboard.php");
+                }
                 exit();
             } else {
                 // Incorrect password
@@ -52,7 +58,6 @@
 
     $conn->close();
 ?>
-
 
 
 <!DOCTYPE html>
@@ -102,8 +107,6 @@
                 <a href="#">Forgot Password</a>
                 <button type="submit">Login</button>
             </form>
-            
-
             
         </section>
     </body>

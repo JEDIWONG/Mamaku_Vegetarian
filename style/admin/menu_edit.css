@@ -1,0 +1,248 @@
+.add-menu
+{ 
+    background-color: #D9D9D9;
+    position: absolute;
+    width: 1150px;
+    height: 50vh;
+    left: 1%;
+    top: 10%;
+    margin-top: 30px;
+}
+.txt-add{
+    display: block;
+    font-family: 'Inter';
+    margin-top: 20px; 
+    margin-left: 20px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.txt-add label
+{
+    text-align: center;
+    margin-right: 100px;
+    position: absolute;
+    margin-left: 5rem;
+}
+.txt-add input
+{
+    width: 30%;
+    border: none;
+    margin-left: 30%;
+}
+.txt-add select
+{
+    margin-left: 30% ;
+    border: none;
+    color: #777777;
+    font-family: 'inter';
+}
+.txt-add textarea{
+    margin-left: 30%;
+    width: 50%;
+    border: none;
+    resize: none;
+    font-size: 18px;
+}
+.txt-add input[type="file"]::-webkit-file-upload-button
+{
+    color: #593FDA;
+    cursor: pointer;
+    border-color: #593FDA;
+    background: #e9e2e2;
+}
+.inline-form{
+    
+    left: 20%;
+}
+
+.btn-add
+{
+    position: absolute;
+    left: 30%;
+    top: 90%;
+    margin-top: 30px;
+    width: 700px;
+}
+
+.btn-add button.btn, a.btn
+{
+    background-color:#D9D9D9 ;
+    margin-right: 20%; 
+    padding-left: 8%;padding-right: 8%;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.btn-add button.btn:hover
+{
+    background-color: #2a9df4; ;
+    color: #D9D9D9;
+}
+.btn-add a.btn:hover
+{
+    background-color: #d63384; ;
+    color: #D9D9D9;
+}
+
+/* css for display menu 
+*/
+.display-menu
+{
+    position: absolute;
+    width: 1150px;
+    height: 50vh;
+    left: 1%;
+    top: 20%;
+}
+
+.displayData /*  control display with css */
+{
+    margin-top: 2%;
+    margin-left: 2cqi;
+}
+.displayData table
+{
+    border-collapse: collapse;
+    border: 2px solid seashell;
+    background: #F7F9FA;
+    border-radius: 7px;
+    padding-left: 20px;
+    width: 100%;
+    text-align: center;
+}
+.displayData table tr
+{
+    margin-left: 2px;
+    border: 2px solid #dddddd;
+    position: relative;
+    padding: 8px;  
+}
+.displayData table td
+{
+    border: 1px solid #1a1a1a;  
+}
+.btn-view
+{
+    margin-right: -1.5rem;margin-left: -1.5rem;
+    padding-left: 2cqi;padding-right: 2cqi;
+    padding-top: 0.3cqi;padding-bottom: 0.3cqi;
+    background-color: #1376c1;
+    border-radius: 6px;
+    border: none;
+    color: white;
+}
+.btn-view:hover
+{
+    background-color: #a2c1d9;
+}
+.error{
+    color: #fa284e;
+    font-family: 'Inter';
+    font-weight: bold;
+}
+.display-img
+{
+    width: 80px;
+}
+.btn-delete
+{
+
+    margin-right: -1.5rem;margin-left: -1.5rem;
+    padding-left: 2cqi;padding-right: 2cqi;
+    padding-top: 0.3cqi;padding-bottom: 0.3cqi;
+    background-color: #1376c1;
+    border-radius: 6px;
+    border: none;
+    color: white;
+}
+.btn-delete i
+{
+    color: #4a36b1;
+}
+.btn-delete button
+{
+    border-color: #4a36b1;
+    cursor: pointer;
+}
+
+
+/* General Styling */
+.add-category-form {
+    display: none; /* Initially hidden */
+    background-color: #f9f9f9; /* Light background */
+    padding: 20px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 20px; /* Spacing from other elements */
+}
+
+/* Headline Styling */
+.add-category-form h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center; /* Center headline */
+}
+
+/* Input and Textarea Styling */
+.add-category-form .txt-add {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+}
+
+.add-category-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+.add-category-form input,
+.add-category-form textarea {
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Rounded input fields */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width */
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+/* Hover and Focus Effects */
+.add-category-form input:focus,
+.add-category-form textarea:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none;
+    background-color: #f0f8ff; /* Light background on focus */
+}
+
+/* Button Styling */
+.add-category-form .btn-add {
+    text-align: center; /* Center the button */
+    margin-top: 10px;
+}
+
+.add-category-form .btn {
+    background-color: #007bff; /* Primary color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-category-form .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.add-category-form .btn:disabled {
+    background-color: #ccc; /* Disabled button styling */
+    cursor: not-allowed;
+}

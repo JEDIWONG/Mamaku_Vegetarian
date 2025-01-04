@@ -9,7 +9,6 @@ CREATE TABLE user (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    username VARCHAR(50) UNIQUE,            -- Used for admins
     email VARCHAR(100) UNIQUE,              -- Used for members
     phone_number VARCHAR(15),
     address TEXT,
