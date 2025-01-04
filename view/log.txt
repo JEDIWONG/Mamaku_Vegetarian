@@ -1,4 +1,4 @@
 Array
 (
-    [email] => jane.doe@example.com
+    [email] => user@exam
 )

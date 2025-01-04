@@ -28,7 +28,7 @@
 });
 
 </script>
-
+    
     <?php
     // Include database connection
     include '../view/db_connect.php';
@@ -36,6 +36,9 @@
     // Fetch user data from the database
     $sql = "SELECT * FROM user WHERE user_id = 3"; // Replace '1' with the dynamic user ID if applicable
     $result = $conn->query($sql);
+
+  
+
 
     if ($result->num_rows > 0) {
         // Fetch associative array
@@ -89,6 +92,11 @@
                 </div>
             </div>
 
+            <div id="user-data"
+     data-first-name="<?php echo htmlspecialchars($first_name); ?>"
+     data-last-name="<?php echo htmlspecialchars($last_name); ?>">
+        </div>
+
             <!-- test -->
     <div class="overlay" id="overlay" onclick="closePopup()"></div>
         <div class="popup" id="popup">
@@ -111,7 +119,7 @@
 
 <!-- Floating Message -->
             <div id="floating-message" style="display: none;">Email address updated</div>
-        
+            
             <script src="../script/edit_function.js"></script>
 
             <div class="advanced-settings">

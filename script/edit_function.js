@@ -1,8 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const userData = document.getElementById("user-data");
+    first_name = userData.getAttribute("data-first-name");
+    last_name = userData.getAttribute("data-last-name");
 
-  first_name = "<?php echo htmlspecialchars($first_name); ?>";
-  last_name = "<?php echo htmlspecialchars($last_name); ?>";
+  });
 
-  let popupShown = false;
+let popupShown = false;
 
   function openPopup() {
    // const fullName = document.getElementById('full-name').textContent.split(' ');
