@@ -20,6 +20,12 @@
             exit();
         }
 
+        // Password policy: 6-8 characters, one uppercase, one number, one special character, no spaces
+        if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,8}$/', $password)) {
+            echo "<script>alert('Password must be 6-8 characters, contain one uppercase letter, one number, one special character, and no spaces.'); window.location.href='register.php';</script>";
+            exit();
+        }
+
         // Check if the email already exists
         $checkEmailQuery = "SELECT * FROM user WHERE email = '$email'";
         $result = $conn->query($checkEmailQuery);
@@ -37,6 +43,7 @@
         exit();
     }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,16 +83,17 @@
 
         </section>
 
-        
-        <form class="register-form" action="register.php" method="POST">
+        <form class="register-form" action="register.php" method="POST" onsubmit="return validatePassword()">
             <h1>Register</h1>
 
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
 
             <button type="submit">Next</button>
         </form>
+
+        <script src="../script/register.js"></script>
 
 </section>
 </body>

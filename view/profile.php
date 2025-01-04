@@ -35,11 +35,8 @@
 
     $conn = new Database();
     // Fetch user data from the database
-    $sql = "SELECT * FROM user WHERE user_id = 3"; // Replace '1' with the dynamic user ID if applicable
+    $sql = "SELECT * FROM user WHERE user_id = 3"; 
     $result = $conn->query($sql);
-
-  
-
 
     if ($result->num_rows > 0) {
         // Fetch associative array

@@ -1,46 +1,59 @@
 <?php
-session_start();
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
-        echo "<script>alert('Step 1 not completed. Please start again.'); window.location.href='register_step1.php';</script>";
-        exit();
-    }
+    session_start();
 
-    require_once '../model/database_model.php';
-    $db = new Database();
-    $conn = $db->conn;
+    require_once "../model/email_notification_model.php";
 
-    $first_name = $conn->real_escape_string($_POST['first_name']);
-    $last_name = $conn->real_escape_string($_POST['last_name']);
-    $phone_number = $conn->real_escape_string($_POST['phone_number']);
-    $email = $_SESSION['email'];
-    $password = $_SESSION['password'];
+    $notification = new EmailNotification();
 
-    // Validate inputs
-    if (empty($first_name) || empty($last_name) || empty($phone_number)) {
-        echo "<script>alert('All fields are required.'); window.location.href='register_step2.php';</script>";
-        exit();
-    }
-
-    // Insert user into the database
-    $insertUserQuery = "INSERT INTO user (email, password_hash, first_name, last_name, phone_number) VALUES ('$email', '$password', '$first_name', '$last_name', '$phone_number')";
-    if ($conn->query($insertUserQuery) === TRUE) {
-        // Get the last inserted user_id
-        $user_id = $conn->insert_id;
-
-        // Create a cart for the user
-        $createCartQuery = "INSERT INTO cart (user_id) VALUES ('$user_id')";
-        if ($conn->query($createCartQuery) === TRUE) {
-            // Registration and cart creation successful
-            session_destroy(); // Clear session
-            echo "<script>alert('Registration successful!'); window.location.href='login.php';</script>";
-        } else {
-            echo "<script>alert('Registration successful, but failed to create cart.'); window.location.href='login.php';</script>";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
+            echo "<script>alert('Step 1 not completed. Please start again.'); window.location.href='register_step1.php';</script>";
+            exit();
         }
-    } else {
-        echo "<script>alert('Registration failed. Please try again.'); window.location.href='register_step2.php';</script>";
+
+        require_once '../model/database_model.php';
+        $db = new Database();
+        $conn = $db->conn;
+
+        $first_name = $conn->real_escape_string($_POST['first_name']);
+        $last_name = $conn->real_escape_string($_POST['last_name']);
+        $phone_number = $conn->real_escape_string($_POST['phone_number']);
+        $email = $_SESSION['email'];
+        $password = $_SESSION['password'];
+
+        // Validate inputs
+        if (empty($first_name) || empty($last_name) || empty($phone_number)) {
+            echo "<script>alert('All fields are required.'); window.location.href='register_step2.php';</script>";
+            exit();
+        }
+
+        // Insert user into the database
+        $insertUserQuery = "INSERT INTO user (email, password_hash, first_name, last_name, phone_number) VALUES ('$email', '$password', '$first_name', '$last_name', '$phone_number')";
+        if ($conn->query($insertUserQuery) === TRUE) {
+            // Get the last inserted user_id
+            $user_id = $conn->insert_id;
+
+            // Create a cart for the user
+            $createCartQuery = "INSERT INTO cart (user_id) VALUES ('$user_id')";
+            if ($conn->query($createCartQuery) === TRUE) {
+                // Registration and cart creation successful
+
+                $notification->sendEmail(
+                    $email,
+                    $first_name." ".$last_name,
+                    "Registration Success",
+                    "Welcome to Mamaku Vegetarian"
+                ); 
+                session_destroy(); // Clear session
+                echo "<script>alert('Registration successful!'); window.location.href='login.php';</script>";
+                
+            } else {
+                echo "<script>alert('Registration successful, but failed to create cart.'); window.location.href='login.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Registration failed. Please try again.'); window.location.href='register_step2.php';</script>";
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>
