@@ -1,167 +1,138 @@
-.sidebar-container{
-    width: 20%;
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* Adjust width as needed */
+    height: 100vh; /* Full viewport height */
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Add scrolling if content exceeds height */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-container {
+    width: 15%; /* Reduced width */
     position: fixed;
     top: 0;
     left: 0;
     color: white;
-    background-color: black;   
+    background-color: black;
     padding-inline: 1%;
     height: 100%;
     z-index: 1000;
-    
+    overflow-y: auto; /* Scrollable if content exceeds height */
 }
 
-.sidebar-container svg{
-    padding-inline:10%;
+.sidebar-container svg {
+    padding-inline: 10%;
     width: 30px;
     height: 30px;
 }
 
-
-.sidebar-logo{
+.sidebar-logo {
     display: flex;
     flex-direction: row;
     column-gap: 5%;
     margin-block: 20px;
-    
 }
 
-.sidebar-logo h3{
-    width: 190px;
+.sidebar-logo h3 {
+    width: 160px; /* Reduced width */
     font-size: 14px;
     color: beige;
     align-self: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.sidebar-logo img{
-    width: 80px;
-    height: 80px;
+.sidebar-logo img {
+    width: 70px;
+    height: 70px; /* Adjusted size */
 }
 
 .sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    row-gap: 15px;
+    width: 100%; /* Make links span the width */
+    text-align: center;
 }
 
-.sidebar-nav a{
+.sidebar-nav a {
     text-decoration: none;
     color: inherit;
 }
 
-.sidebar-nav li{
+.sidebar-nav li {
     display: flex;
     flex-direction: row;
-    padding-left: 5%;
-    padding-right: 10%;
-    padding-block: 5px;
+    padding: 10px 10%;
     border-radius: 10px;
     list-style: none;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
-
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar-nav li:hover{
+.sidebar-nav li.active, /* Highlight active page */
+.sidebar-nav li:hover {
     background-color: rgb(234, 30, 99);
+    color: white;
 }
 
-.sidebar-container button{
-    margin-block:50px;
-    margin-left: 30%;
+.sidebar-container button {
+    margin-block: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: white;
+    background-color: rgb(234, 30, 99); /* Visible background for better contrast */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
-.sidebar-greet{
-    display: flex;
-    flex-direction: column;
-    row-gap: 0px;
-    margin-left: 1%;
-    margin-block: 5px;
-    
+.sidebar-container button:hover {
+    background-color: white;
+    color: black;
 }
 
-.sidebar-greet p{
-    font-size: 15px;
-    color: rgb(208, 208, 205);
-    margin: 0px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-.sidebar-greet h5{
-    margin: 0px;
-    margin-top: 10px;
-    margin-left: 10%;
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .sidebar-container {
-        width: 100%; /* Full width for smaller screens */
-        padding: 5%; /* Reduce padding for better fit */
-        box-shadow: none; /* Remove shadow for simplicity on small screens */
-        height: auto; /* Allow dynamic height */
+        width: 100%;
+        padding: 5%;
+        height: auto;
     }
 
     .sidebar-logo {
-        flex-direction: column; /* Stack logo and text vertically */
-        align-items: center; /* Center align items */
-        margin-block: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .sidebar-logo img {
-        width: 60px; /* Adjust size for smaller screens */
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     .sidebar-logo h3 {
-        text-align: center; /* Center the text */
-        font-size: 12px; /* Smaller font size */
-        margin: 5px 0;
-    }
-
-    .sidebar-greet {
-        align-items: center; /* Center text */
-        text-align: center;
-        margin-left: 0; /* Remove left margin */
-    }
-
-    .sidebar-greet p,
-    .sidebar-greet h5 {
-        font-size: 14px; /* Adjust font sizes */
-    }
-
-    .sidebar-nav {
-        row-gap: 5px; /* Reduce gap between items */
-        align-items: center; /* Center align items */
+        font-size: 12px;
     }
 
     .sidebar-nav li {
-        padding-left: 0; /* Remove extra padding */
-        padding-right: 0;
-        font-size: 16px; /* Reduce font size */
-        justify-content: center; /* Center align text and icons */
-        border-radius: 5px; /* Smaller border radius */
-    }
-
-    .sidebar-nav svg {
-        height: 20px; /* Smaller icon size */
-        margin-right: 5px; /* Space between icon and text */
+        padding: 5px 5%;
+        font-size: 14px;
+        justify-content: center;
     }
 
     .sidebar-container button {
-        margin: 20px auto; /* Center button with smaller margins */
-        display: block;
-    }
-
-    .footer-container {
-        position: static; /* Let footer flow with the content */
-        text-align: center; /* Center footer content */
-        padding: 10px 0;
+        padding: 8px 15px;
+        font-size: 14px;
     }
 }

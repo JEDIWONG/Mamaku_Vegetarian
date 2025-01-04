@@ -15,6 +15,20 @@
 </head>
 <body>
 
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.profile; // e.g., "/profile"
+    const navLinks = document.querySelectorAll(".sidebar-nav a");
+
+    navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+            link.parentElement.classList.add("active"); // Add class to the <li> element
+        }
+    });
+});
+
+</script>
+
     <?php
     // Include database connection
     include '../view/db_connect.php';
