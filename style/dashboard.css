@@ -5,6 +5,7 @@
     padding: 20px 30px; /* Adjust padding for more horizontal space */
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;

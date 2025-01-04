@@ -96,7 +96,7 @@
             <p>RM <?php echo number_format($total_price, 2); ?></p>
         </section>
 
-        <button class="checkout-btn" onclick="location.href ='checkout.php'">
+        <button class="checkout-btn" onclick="location.href ='checkout.php'" <?php echo empty($cart_items) ? 'disabled' : ''; ?>>
             Checkout
         </button>
 

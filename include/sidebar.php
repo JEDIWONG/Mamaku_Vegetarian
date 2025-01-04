@@ -5,10 +5,12 @@
 
     $fname = isset($_SESSION['first_name']) ? $_SESSION['first_name'] : "Guest";
     $lname = isset($_SESSION['last_name']) ? $_SESSION['last_name'] : "";
+
+    $isLoggedIn = isset($_SESSION['user_id']); 
 ?>
 
 <div class="sidebar-container">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo" onclick="location.href='../'">
         <img src="../assets/images/logo.png">
         <h3>
             Mamaku Vegetarian
@@ -135,8 +137,16 @@
 
     </ul>
 
-    <button class="logout-btn" onclick="location.href='../'">
-        Log Out
-    </button>
+    <?php if ($isLoggedIn): ?>
+        <!-- Display Logout button if user is logged in -->
+        <button class="logout-btn" onclick="location.href='../controller/logout.php'">
+            Log Out
+        </button>
+    <?php else: ?>
+        <!-- Display Login button if user is not logged in -->
+        <button class="login-btn" onclick="location.href='login.php'">
+            Login
+        </button>
+    <?php endif; ?>
 
 </div>

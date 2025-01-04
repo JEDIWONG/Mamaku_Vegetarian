@@ -30,9 +30,10 @@
 </script>
     
     <?php
-    // Include database connection
-    include '../view/db_connect.php';
 
+    include "../model/database_model.php";
+
+    $conn = new Database();
     // Fetch user data from the database
     $sql = "SELECT * FROM user WHERE user_id = 3"; // Replace '1' with the dynamic user ID if applicable
     $result = $conn->query($sql);
@@ -84,12 +85,12 @@
                 }
             </style>
             <div class="personal-details">
-                <div class="profile-pic"></div>
                 <div>
                 <h1 id="full-name"><?php echo htmlspecialchars($first_name . ' ' . $last_name); ?></h1>
                     <p>Registered since <?php echo htmlspecialchars($registration_date); ?></p>
-                    <button class="edit-btn" onclick="openPopup()">Edit Name</button>
+                    
                 </div>
+                <button class="edit-btn" onclick="openPopup()">Edit Name</button>
             </div>
 
             <div id="user-data"
@@ -142,4 +143,4 @@
     </main>
     <?php include "../include/footer.php"?>
 </body>
-</html>
+</html> 

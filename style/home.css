@@ -1,0 +1,191 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background-color: rgba(35, 28, 26, 0.8);
+    height:80px;
+    width:100%;
+    position:fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    padding-block: 10px;
+    z-index: 10;
+}
+
+.home-logo{
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    height: inherit;
+    
+    align-items: center;
+}
+
+.home-logo img{
+    
+    height: inherit;  
+}
+
+.home-logo h1{
+    color:white;
+    font-size: 16px;
+        
+}
+header ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header li{
+    display:inline;
+    margin-right:3vw;
+}
+
+header li.btn.signup{
+    margin-left: auto;
+}
+
+header a{
+    color:white;
+    text-decoration:none;
+}
+header a:hover{
+    text-decoration: underline;
+}
+
+header nav ul li .btn.signup {
+    background: #e74c3c;
+    border-radius: 10px; /* Rounded corners */
+    color: white; /* White text */
+    padding: 10px 20px; /* Adjust padding */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+header nav ul li .btn.signup:hover {
+    background: #c0392b; /* Darker red on hover */
+}
+
+header nav ul li .btn.login {
+    background: #2ecc71;
+    border-radius: 10px; /* Rounded corners */
+    color: white; /* White text */
+    padding: 10px 20px; /* Adjust padding */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+header nav ul li .btn.login:hover {
+    background: #27ae60; /* Darker green on hover */
+}  
+
+.news{
+    background-color:antiquewhite;
+    color:white;
+    height:100vh;
+    background-image: url("../assets/images/banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.news h2{
+    font-size: 60px;
+    margin-top: 20px;
+}
+.news p{
+    color:#FEF7E6;
+    font-size: 18px;
+    padding-top:60px;
+}
+.news a{
+    color:white;
+    text-decoration: none;
+    border: 3px solid #ACACAC ;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+footer{
+    background-color:#000000 ;
+    color:#B7B7B7;
+    height:60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.about{
+    background-color:antiquewhite;
+    color:white;
+    height:120vh;
+    background-image: url("../assets/images/Shop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.about h2{
+    font-size: 60px;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-align: left;
+    -webkit-text-stroke:1px #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style for the box */
+.box {
+    width: 500px;               /* Width of the box */
+    height: 130px;              /* Height of the box */
+    background-color: #B5986D;  /* Background color of the box */
+   /* border: 1px solid #000000;  /* Border around the box */
+    border-radius: 50px;        /* Optional: Rounded corners */
+    padding: 10px; 
+    margin-top: 50px;
+    margin-left: 50px;
+    box-shadow: 0px 0px 3px black;             /* Space inside the box */
+}
+
+.box h3 {
+    color: black;               /* Text color */
+    font-size: 25px;            /* Font size */
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 150px;
+    padding-top: 15px;
+}
+
+.box p{
+    color: black;               /* Text color */
+    font-size: 15px;            /* Font size */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 153px;
+    padding-top: 15px;
+}
+
+.box img{
+    width: 25%;
+    border-radius: 10px;
+    position: relative;
+    bottom: 100px;
+}
+
+.menu{
+    display: none;
+}

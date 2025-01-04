@@ -1,0 +1,122 @@
+.receipt-page-container{
+    padding-inline: 10%;
+    padding-block: 30px;
+    margin-right: 5%;
+    box-shadow: 0px 0px 3px gray;
+}
+
+.receipt-page-container button{
+    border: none;
+    background-color: rgb(255, 0, 89);
+    font-size: 24px;
+    padding-block: 10px;
+    padding-inline: 5%;
+    font-weight: bold;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0px 0px 3px grey;
+}
+
+.receipt-page-container button:hover{
+    background-color: rgb(150, 0, 52);
+    cursor: pointer;
+}
+
+
+
+.receipt-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10%;
+    margin-left: 30%;
+}
+
+.receipt-logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.receipt-recipient{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    margin-block: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.receipt-recipient h3{
+    margin-bottom:5px;
+}
+
+.receipt-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin-right: 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.receipt-container h1{
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-left: 10%;
+    border-bottom: 3px solid grey;
+}
+
+.receipt-attribute{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+}
+
+.receipt-attribute h3{
+    width: 80%;
+}
+
+.receipt-order-details{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 10%;
+    width: 100%;
+}
+
+.receipt-order-list{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 10%;
+    width: 100%;
+}
+
+.receipt-order-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.receipt-order-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.receipt-order-item p{
+    width: 20%;
+}
+
+.receipt-order-item h5{
+    width: 40%;
+}
+
+.receipt-price{
+    color: green;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 10px;
+    border-bottom: 3px solid green;
+    font-size: 24px;
+}

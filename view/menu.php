@@ -15,6 +15,7 @@
 <body>
     <?php include "../include/sidebar.php"?>
     <main>
+        <?php include "../include/searchpanel.php" ?>
         <?php include "../include/product_list.php" ?>
         
     </main>

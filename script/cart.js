@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const cartItems = document.querySelectorAll('.cart-item-container');
+
     // Attach event listener to delete buttons
     document.querySelectorAll(".delete-btn").forEach((btn) => {
         btn.addEventListener("click", async (e) => {
@@ -28,4 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+
+    // Disable checkout button if cart is empty
+    if (cartItems.length === 0) {
+        checkoutBtn.disabled = true;
+    } else {
+        checkoutBtn.disabled = false;
+    }
 });
