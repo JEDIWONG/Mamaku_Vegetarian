@@ -26,10 +26,11 @@
     }
 
     try {
-        // Query all transactions for the logged-in user with sorting
+        
         $stmt = $conn->prepare("
             SELECT 
                 t.transaction_id, 
+                t.order_id,
                 t.payment_method, 
                 o.total_amount, 
                 DATE(t.transaction_date) AS transaction_date, 
@@ -52,7 +53,7 @@
     }
 
     $conn->close();
-    ?>
+?>
 
 
     <!DOCTYPE html>
@@ -107,7 +108,7 @@
                     <?php if (!empty($transactions)): ?>
                         <?php $no = 1; ?>
                         <?php foreach ($transactions as $transaction): ?>
-                            <tr>
+                            <tr data-transaction-id="<?php echo htmlspecialchars($transaction['order_id']); ?>">
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo htmlspecialchars($transaction['transaction_id']); ?></td>
                                 <td><?php echo htmlspecialchars($transaction['transaction_date']); ?></td>
@@ -124,6 +125,6 @@
                 </tbody>
             </table>
         </main>
-
+        <script src="../script/transaction.js"></script>
     </body>
 </html>

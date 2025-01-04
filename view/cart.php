@@ -1,19 +1,22 @@
 <?php
 
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    require_once '../model/database_model.php';
+require_once '../model/database_model.php';
 
+// Check if user is logged in
+$user_id = $_SESSION['user_id'] ?? null;
+
+// Initialize variables
+$cart_items = [];
+$total_price = 0;
+
+if ($user_id) {
+    // Fetch cart data for logged-in users
     $db = new Database();
     $conn = $db->conn;
-
-    $user_id = $_SESSION['user_id'];
-
-    // Initialize variables
-    $cart_items = [];
-    $total_price = 0;
 
     try {
         // Get the cart ID for the logged-in user
@@ -38,11 +41,8 @@
 
             while ($item = $result->fetch_assoc()) {
                 $cart_items[] = $item;
-                $total_price += $item['price']; // Accumulate total price
+                $total_price += $item['price'] * $item['quantity']; // Accumulate total price
             }
-        } else {
-            echo "No cart found for the user.";
-            exit;
         }
     } catch (Exception $e) {
         echo "Failed to fetch cart data: " . $e->getMessage();
@@ -50,6 +50,15 @@
     }
 
     $conn->close();
+} else {
+    // Use session to store cart for guests
+    $cart_items = $_SESSION['guest_cart'] ?? [];
+    foreach ($cart_items as &$item) {
+        // Simulate a placeholder product name for guest cart items (if not set)
+        $item['product_name'] = $item['product_name'] ?? 'Guest Product';
+        $total_price += $item['price'] * $item['quantity'];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +90,7 @@
                                 <p class="cart-item-quantity">x <?php echo htmlspecialchars($item['quantity']); ?></p>
                                 <p class="cart-item-price">RM <?php echo number_format($item['price'], 2); ?></p>
                             </div>
-                            <button class="delete-btn" data-id="<?php echo $item['cart_item_id']; ?>">Delete</button>
+                            <button class="delete-btn" data-id="<?php echo $item['cart_item_id'] ?? ''; ?>">Delete</button>
                             
                         </div>
                     <?php endforeach; ?>

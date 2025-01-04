@@ -1,80 +1,80 @@
 <?php
-session_start(); // Start the session
+    session_start(); // Start the session
 
-// Redirect if order ID is not set in the session
-if (!isset($_SESSION['order_id'])) {
-    header("Location: menu.php"); // Redirect to the menu page or another appropriate page
-    exit;
-}
-
-$order_id = $_SESSION['order_id']; // Get the order ID from the session
-
-// Include the database connection
-require_once '../model/database_model.php';
-
-$db = new Database();
-$conn = $db->conn;
-
-try {
-    // Fetch order and transaction details
-    $stmt = $conn->prepare("
-        SELECT o.order_id, o.user_id, o.total_amount, o.daily_order_no, o.created_at, 
-               t.payment_method, t.payment_status 
-        FROM `order` o 
-        JOIN transaction t ON o.order_id = t.order_id 
-        WHERE o.order_id = ?
-    ");
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
-    }
-    $stmt->bind_param("i", $order_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 0) {
-        throw new Exception("Order not found.");
+    // Redirect if order ID is not set in the session
+    if (!isset($_SESSION['order_id'])) {
+        header("Location: menu.php"); // Redirect to the menu page or another appropriate page
+        exit;
     }
 
-    $order = $result->fetch_assoc();
+    $order_id = $_SESSION['order_id']; // Get the order ID from the session
 
-    // Fetch client details
-    $stmt = $conn->prepare("
-        SELECT first_name, last_name, email, phone_number 
-        FROM user 
-        WHERE user_id = ?
-    ");
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
+    // Include the database connection
+    require_once '../model/database_model.php';
+
+    $db = new Database();
+    $conn = $db->conn;
+
+    try {
+        // Fetch order and transaction details
+        $stmt = $conn->prepare("
+            SELECT o.order_id, o.user_id, o.total_amount, o.daily_order_no, o.created_at, 
+                t.payment_method, t.payment_status 
+            FROM `order` o 
+            JOIN transaction t ON o.order_id = t.order_id 
+            WHERE o.order_id = ?
+        ");
+        if (!$stmt) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            throw new Exception("Order not found.");
+        }
+
+        $order = $result->fetch_assoc();
+
+        // Fetch client details
+        $stmt = $conn->prepare("
+            SELECT first_name, last_name, email, phone_number 
+            FROM user 
+            WHERE user_id = ?
+        ");
+        if (!$stmt) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+        $stmt->bind_param("i", $order['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            throw new Exception("User not found.");
+        }
+
+        $user = $result->fetch_assoc();
+
+        // Fetch order items
+        $stmt = $conn->prepare("
+            SELECT item_name, quantity, price 
+            FROM order_item 
+            WHERE order_id = ?
+        ");
+        if (!$stmt) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $order_items = $stmt->get_result();
+
+        // Close the database connection
+        $conn->close();
+    } catch (Exception $e) {
+        echo "Failed to fetch order details: " . $e->getMessage();
+        exit;
     }
-    $stmt->bind_param("i", $order['user_id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 0) {
-        throw new Exception("User not found.");
-    }
-
-    $user = $result->fetch_assoc();
-
-    // Fetch order items
-    $stmt = $conn->prepare("
-        SELECT item_name, quantity, price 
-        FROM order_item 
-        WHERE order_id = ?
-    ");
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
-    }
-    $stmt->bind_param("i", $order_id);
-    $stmt->execute();
-    $order_items = $stmt->get_result();
-
-    // Close the database connection
-    $conn->close();
-} catch (Exception $e) {
-    echo "Failed to fetch order details: " . $e->getMessage();
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -155,5 +155,7 @@ try {
 
             <button>Download As .PDF</button>
         </main>
+
+        
     </body>
 </html>

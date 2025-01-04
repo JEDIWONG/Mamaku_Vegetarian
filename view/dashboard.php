@@ -1,8 +1,14 @@
 <?php
 
-    include "../model/database_model.php"; 
+    include "../model/database_model.php";
 
     session_start(); // Start the session
+
+    if (!isset($_SESSION['user_id'])) {
+        // Redirect guest users to the login page
+        header("Location: login.php");
+        exit;
+    }
 
     $conn = new Database();
 
@@ -19,7 +25,9 @@
         ";
 
         $orderCountResult = $conn->query($orderCountQuery);
-        $orderCount = $orderCountResult->fetch_assoc()['order_count'];
+        $orderCount = ($orderCountResult && $orderCountResult->num_rows > 0)
+            ? $orderCountResult->fetch_assoc()['order_count']
+            : 0;
 
         // Query to get the favorite menu for the user
         $favoriteMenuQuery = "
@@ -43,7 +51,13 @@
         ";
 
         $favoriteMenuResult = $conn->query($favoriteMenuQuery);
-        $favoriteMenu = $favoriteMenuResult->fetch_assoc();
+        $favoriteMenu = ($favoriteMenuResult && $favoriteMenuResult->num_rows > 0)
+            ? $favoriteMenuResult->fetch_assoc()
+            : [
+                'item_name' => 'No favorite menu yet',
+                'image' => 'placeholder.png',
+                'last_updated' => 'N/A'
+            ];
 
         // Query to get the top-selling menu for the user
         $topSellingMenuQuery = "
@@ -57,30 +71,36 @@
                 `order` o ON oi.order_id = o.order_id
             JOIN 
                 product p ON oi.item_name = p.name
-            WHERE 
-                o.user_id = $user_id 
             GROUP BY 
                 p.name 
             ORDER BY 
                 SUM(oi.quantity) DESC 
             LIMIT 1;
         ";
+
         $topSellingMenuResult = $conn->query($topSellingMenuQuery);
-        $topSellingMenu = $topSellingMenuResult->fetch_assoc();
+        $topSellingMenu = ($topSellingMenuResult && $topSellingMenuResult->num_rows > 0)
+            ? $topSellingMenuResult->fetch_assoc()
+            : [
+                'item_name' => 'No top-selling menu yet',
+                'image' => 'placeholder.png',
+                'last_updated' => 'N/A'
+            ];
     } else {
         // Default values if the user is not logged in
         $orderCount = 0;
         $favoriteMenu = [
-            'item_name' => 'No favorite menu',
-            'image' => '../assets/images/placeholder.png',
+            'item_name' => 'No favorite menu yet',
+            'image' => 'placeholder.png',
             'last_updated' => 'N/A'
         ];
         $topSellingMenu = [
-            'item_name' => 'No top-selling menu',
-            'image' => '../assets/images/placeholder.png',
+            'item_name' => 'No top-selling menu yet',
+            'image' => 'placeholder.png',
             'last_updated' => 'N/A'
         ];
     }
+
 
 ?>
 
@@ -95,6 +115,7 @@
     <link rel="stylesheet" href="../style/sidebar.css">
     <link rel="stylesheet" href="../style/searchpanel.css">
     <link rel="stylesheet" href="../style/dashboard.css"> 
+    <link rel="stylesheet" href="../style/footer.css"> 
 </head>
 <body>
 
@@ -150,7 +171,9 @@
             </div>
 
         </section>
-    </main>
 
+        
+    </main>
+    <?php include "../include/footer.php" ?>
 </body>
 </html>

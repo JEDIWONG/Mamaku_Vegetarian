@@ -5,12 +5,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-
-    if (!isset($_SESSION['user_id'])) {
-        echo json_encode(["status" => "error", "message" => "User not logged in."]);
-        exit;
-    }
-
+    
     require_once '../model/database_model.php';
     $db = new Database();
     $conn = $db->conn;
