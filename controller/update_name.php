@@ -1,43 +1,41 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mamaku_vegetarian";
+    session_start();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    header("Content-Type: application/json");
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    // Include database connection
+    require_once '../model/database_model.php';
 
+    $input = json_decode(file_get_contents("php://input"), true);
 
-// Get JSON input
-$data = json_decode(file_get_contents('php://input'), true);
-file_put_contents("log.txt", print_r($data, true)); 
-$firstName = $data['firstName'];
-$lastName = $data['lastName'];
+    if (!isset($input['userId'], $input['fullName'])) {
+        echo json_encode(["success" => false, "message" => "Invalid input."]);
+        exit;
+    }
 
-// Replace 'user_id' with the actual user identifier
-$userId = 1; // Example user ID
+    $userId = intval($input['userId']);
+    $fullName = trim($input['fullName']);
+    list($firstName, $lastName) = explode(' ', $fullName, 2) + ["", ""];
 
-// Update query
-$sql = "UPDATE user SET first_name = ?, last_name = ? WHERE user_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ssi", $firstName, $lastName, $userId);
+    try {
+        $db = new Database();
+        $conn = $db->conn;
 
-$response = [];
-if ($stmt->execute()) {
-    $response['success'] = true;
-} else {
-    $response['success'] = false;
-}
+        // Update the user's name in the database
+        $stmt = $conn->prepare("UPDATE user SET first_name = ?, last_name = ? WHERE user_id = ?");
+        $stmt->bind_param("ssi", $firstName, $lastName, $userId);
 
-$stmt->close();
-$conn->close();
+        if ($stmt->execute()) {
+            // Update session variables
+            $_SESSION['first_name'] = $firstName;
+            $_SESSION['last_name'] = $lastName;
 
-// Return JSON response
-header('Content-Type: application/json');
-echo json_encode($response);
+            echo json_encode(["success" => true, "message" => "Name updated successfully."]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Failed to update name in database."]);
+        }
+    } catch (Exception $e) {
+        echo json_encode(["success" => false, "message" => "Server error: " . $e->getMessage()]);
+    }
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 // Start the session and include database connection
 session_start();
-require_once 'db_connect.php'; // Include your database connection file
+require_once '../model/database_model.php'; // Include your database connection file
 
 // Get the phone number from the request body (POST method)
 $data = json_decode(file_get_contents('php://input'), true);

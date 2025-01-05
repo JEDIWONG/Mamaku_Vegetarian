@@ -1,6 +1,9 @@
 <?php
+
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $password = $_POST['password'];
+    $password = $_POST['confirm-password'];
 
     // Validate password
     if (empty($password)) {
@@ -21,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("UPDATE user SET password = :password WHERE id = :id");
         $stmt->execute([
             ':password' => $hashedPassword,
-            ':id' => 1 // Replace with the appropriate user ID
+            ':id' => $_SESSION['user_id']   
         ]);
 
         echo 'success';

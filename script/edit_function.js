@@ -1,130 +1,123 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const userData = document.getElementById("user-data");
-    first_name = userData.getAttribute("data-first-name");
-    last_name = userData.getAttribute("data-last-name");
+  const userData = document.getElementById("user-data");
+  first_name = userData.getAttribute("data-first-name");
+  last_name = userData.getAttribute("data-last-name");
+  const userId = document.getElementById('user-id').getAttribute('data-user-id');
 
-  });
+});
 
 let popupShown = false;
 
-  function openPopup() {
-   // const fullName = document.getElementById('full-name').textContent.split(' ');
-    document.getElementById('first-name').value = first_name;
-    document.getElementById('last-name').value = last_name;
+function saveName() {
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName = document.getElementById('last-name').value.trim();
+  const fullName = `${firstName} ${lastName}`;
+  const userId = document.getElementById('user-id').getAttribute('data-user-id');
 
-    document.getElementById('popup').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
-  }
-
-  function closePopup() {
-    document.getElementById('popup').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-  }
-
-  function saveName() {
-    const firstName = document.getElementById('first-name').value.trim();
-    const lastName = document.getElementById('last-name').value.trim();
-
-    fetch('../view/update_name.php', {
+  fetch('../controller/update_name.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName })
-    })
-    .then(response => response.json())
-    .then(data => {
+      body: JSON.stringify({ userId, fullName })
+  })
+  
+  .then(response => response.json())
+  .then(data => {
       if (data.success) {
-      // Update both the displayed name and the JavaScript variables
-      document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
-      // Update the JavaScript variables for future edits
-      first_name = firstName;
-      last_name = lastName;
-      closePopup();
+          document.getElementById('full-name').textContent = fullName;
+          closePopup();
       } else {
-        alert('Failed to update name. Please try again.');
+          alert(data.message || 'Failed to update name.');
       }
-    })
-    .catch(error => {
+  })
+  .catch(error => {
       console.error('Error:', error);
       alert('An error occurred. Please try again.');
-    });
-  }
-
-  function changePassword() {
-    const passwordField = document.getElementById('password');
-    const successMessage = document.getElementById('successMessage');
-    const formData = new FormData();
-
-    formData.append('password', passwordField.value);
-
-    fetch('change_password.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        if (data === 'success') {
-            successMessage.style.display = 'block';
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 3000);
-        }
-    })
-    .catch(error => console.error('Error:', error));
+  });
 }
 
-      // Add event listener for when the email field loses focus
-    document.getElementById('email-field').addEventListener('blur', function() {
-        const email = this.value.trim();
 
-        if (!popupShown) {
-          popupShown = true; // Set the flag
-          const email = this.value.trim();
-          if (email === "") {
-              alert("Email field cannot be empty."); // Example popup
-          }
-          setTimeout(() => popupShown = false, 100); // Reset flag after a brief delay
-      }
-  });
 
-    if (email) {
-        // Send the updated email to the server
-        fetch('../view/update_email.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+
+function openPopup() {
+ // const fullName = document.getElementById('full-name').textContent.split(' ');
+  document.getElementById('first-name').value = first_name;
+  document.getElementById('last-name').value = last_name;
+
+  document.getElementById('popup').classList.add('active');
+  document.getElementById('overlay').classList.add('active');
+}
+
+function closePopup() {
+  document.getElementById('popup').classList.remove('active');
+  document.getElementById('overlay').classList.remove('active');
+}
+    // Function to open the popup
+    function openChangePasswordPopup() {
+        document.getElementById('change-password-popup').style.display = 'block';
+        document.getElementById('change-password-overlay').style.display = 'block';
+    }
+
+    // Function to close the popup
+    function closeChangePasswordPopup() {
+        document.getElementById('change-password-popup').style.display = 'none';
+        document.getElementById('change-password-overlay').style.display = 'none';
+    }
+
+    // Handle the form submission via AJAX
+    document.getElementById('change-password-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const currentPassword = document.getElementById('current-password').value.trim();
+        const newPassword = document.getElementById('new-password').value.trim();
+        const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+        const formData = new FormData();
+        formData.append('current-password', currentPassword);
+        formData.append('new-password', newPassword);
+        formData.append('confirm-password', confirmPassword);
+
+        fetch('../controller/change_password.php', {
+            method: 'POST',
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data); 
-        if (data.success) {
-            // Show the floating message
-            const message = document.getElementById('floating-message');
-            message.style.display = 'block';
-            
-            // Hide the message after 3 seconds
-            setTimeout(() => {
-            message.style.display = 'none';
-            }, 3000);
-        } else {
-            alert('Failed to update email. Please try again.');
-        }
+            const messageDiv = document.getElementById('change-password-message');
+            if (data.success) {
+                messageDiv.textContent = data.message;
+                messageDiv.style.color = 'green';
+                // Optionally close the popup after success
+                setTimeout(closeChangePasswordPopup, 3000);
+            } else {
+                messageDiv.textContent = data.message;
+                messageDiv.style.color = 'red';
+            }
         })
         .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
+            console.error('Error:', error);
         });
+    });
+
+  // Add event listener for when the email field loses focus
+document.getElementById('email-field').addEventListener('blur', function() {
+    const email = this.value.trim();
+
+      if (!popupShown) {
+        popupShown = true; // Set the flag
+        const email = this.value.trim();
+        if (email === "") {
+            alert("Email field cannot be empty."); // Example popup
+        }
+        setTimeout(() => popupShown = false, 100); // Reset flag after a brief delay
     }
-  
 
-    document.getElementById('phone-field').addEventListener('blur', function() {
-      const phone_number = this.value.trim();
 
-  if (phone_number) {
+  if (email) {
       // Send the updated email to the server
-      fetch('../view/update_phone.php', {
+      fetch('../controller/update_email.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone_number })
+      body: JSON.stringify({ email })
       })
       .then(response => response.json())
       .then(data => {
@@ -147,29 +140,62 @@ let popupShown = false;
       alert('An error occurred. Please try again.');
       });
   }
-  });
+});
 
-  function confirmDeleteAccount() {
-    document.getElementById('delete-overlay').style.display = 'block';
-    document.getElementById('delete-popup').style.display = 'block';
+  document.getElementById('phone-field').addEventListener('blur', function() {
+    const phone_number = this.value.trim();
+
+if (phone_number) {
+    // Send the updated email to the server
+    fetch('../controller/update_phone.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone_number })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); 
+    if (data.success) {
+        // Show the floating message
+        const message = document.getElementById('floating-message');
+        message.style.display = 'block';
+        
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+        message.style.display = 'none';
+        }, 3000);
+    } else {
+        alert('Failed to update email. Please try again.');
+    }
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred. Please try again.');
+    });
+}
+});
+
+function confirmDeleteAccount() {
+  document.getElementById('delete-overlay').style.display = 'block';
+  document.getElementById('delete-popup').style.display = 'block';
 }
 
 function closeDeletePopup() {
-    document.getElementById('delete-overlay').style.display = 'none';
-    document.getElementById('delete-popup').style.display = 'none';
+  document.getElementById('delete-overlay').style.display = 'none';
+  document.getElementById('delete-popup').style.display = 'none';
 }
 
 function deleteAccount() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '../view/delete_account.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            alert('Account deleted successfully.');
-            window.location.href = '../view/logout.php'; // Redirect to logout page
-        } else {
-            alert('An error occurred. Please try again.');
-        }
-    };
-    xhr.send('user_id=1'); // Pass the dynamic user ID if applicable
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '../contoller/delete_account.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onload = function () {
+      if (xhr.status === 200) {
+          alert('Account deleted successfully.');
+          window.location.href = '../controller/logout.php'; // Redirect to logout page
+      } else {
+          alert('An error occurred. Please try again.');
+      }
+  };
+  xhr.send('user_id=1'); // Pass the dynamic user ID if applicable
 }
