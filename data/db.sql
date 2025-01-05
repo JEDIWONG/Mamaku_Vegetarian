@@ -5,7 +5,7 @@ CREATE DATABASE mamaku_vegetarian;
 USE mamaku_vegetarian;
 
 -- Create user table (combines admin and registered members)
-CREATE TABLE user (
+CREATE TABLE user ( 
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
     last_name VARCHAR(100),

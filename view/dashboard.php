@@ -55,7 +55,7 @@
             ? $favoriteMenuResult->fetch_assoc()
             : [
                 'item_name' => 'No favorite menu yet',
-                'image' => 'placeholder.png',
+                'image' => 'prod_1.jpg',
                 'last_updated' => 'N/A'
             ];
 
@@ -83,7 +83,7 @@
             ? $topSellingMenuResult->fetch_assoc()
             : [
                 'item_name' => 'No top-selling menu yet',
-                'image' => 'placeholder.png',
+                'image' => 'prod_1.jpg',
                 'last_updated' => 'N/A'
             ];
     } else {
@@ -91,12 +91,12 @@
         $orderCount = 0;
         $favoriteMenu = [
             'item_name' => 'No favorite menu yet',
-            'image' => 'placeholder.png',
+            'image' => 'prod_1.jpg',
             'last_updated' => 'N/A'
         ];
         $topSellingMenu = [
             'item_name' => 'No top-selling menu yet',
-            'image' => 'placeholder.png',
+            'image' => 'prod_1.jpg',
             'last_updated' => 'N/A'
         ];
     }
@@ -144,7 +144,7 @@
 
             <!-- Favorite Menu Card -->
             <div class="menu-card">
-                <img src="<?php echo "../assets/images/".$favoriteMenu['image']; ?>" alt="<?php echo $favoriteMenu['item_name']; ?>">
+                <img src="<?php echo "../assets/images/products/".$favoriteMenu['image']; ?>" alt="<?php echo $favoriteMenu['item_name']; ?>">
                 <h2>Your Favourite Menu</h2>
                 <div class="menu-info">
                     <span class="menu-name"><?php echo $favoriteMenu['item_name']; ?></span>
@@ -158,7 +158,7 @@
 
             <!-- Top Selling Menu Card -->
             <div class="menu-card">
-                <img src="<?php echo "../assets/images/".$topSellingMenu['image']; ?>" alt="<?php echo $topSellingMenu['item_name']; ?>">
+                <img src="<?php echo "../assets/images/products/".$topSellingMenu['image']; ?>" alt="<?php echo $topSellingMenu['item_name']; ?>">
                 <h2>Top Selling Menu</h2>
                 <div class="menu-info">
                     <span class="menu-name"><?php echo $topSellingMenu['item_name']; ?></span>
