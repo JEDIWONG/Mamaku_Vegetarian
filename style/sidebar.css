@@ -120,6 +120,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.sidebar-greet h5{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .sidebar-container button:hover {
     background-color: white;
     color: black;
