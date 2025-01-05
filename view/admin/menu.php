@@ -11,6 +11,8 @@ $con = $db->conn;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/menu_edit.css">
     <link rel="stylesheet" href="../../style/admin/display_data.css">
+    <link rel="stylesheet" href="../../style/admin/dashboard.css">
+    <link rel="icon" type="image/svg" href="../../assets/icons/Logo.svg">
     <title>Edit Menu</title>
 
 </head>
@@ -39,16 +41,17 @@ $con = $db->conn;
                     <button type="submit" name="search" class="btn-search"><i class="fa fa-search"></i></button>
                 </form>
             </div>
+           
             <div class="right-side">
-                <a href=""><i class="fa fa-bell"></i></a>
-                <a href=""><i class="fa fa-user"></i></a>
+                    <button class="btn-icon"><i class="fa fa-bell"></i></button>
             </div>
+        
         </div>
         <div class="btn-arrange">
             <a href="add_menu.php" class="btn-create">Add a Menu</a>
         </div>
 
-        <div class="display-menu">
+        <div class="display-menu" style="margin-bottom: 100px">
             <div class="displayData">
                 <table>
                     <tr>
@@ -77,16 +80,16 @@ $con = $db->conn;
                                 <td><?php echo htmlspecialchars($row['category_name'] ?? 'Uncategorized'); ?></td>
                                 <td>
                                     <?php if (!empty($row['image'])) { ?>
-                                        <img src="../../assets/upload/<?php echo htmlspecialchars($row['image']); ?>" alt="Menu Image" class="display-img">
+                                        <img src="../../assets/images/products/<?php echo htmlspecialchars($row['image']); ?>" alt="Menu Image" class="display-img">
                                     <?php } else { ?>
-                                        <img src="../../assets/default-placeholder.png" alt="No Image" class="display-img">
+                                        <img src="../../assets/images/placeholder.png" alt="No Image" class="display-img">
                                     <?php } ?>
                                 </td>
                                 <td><?php echo "RM " . number_format($row['price'], 2); ?></td>
                                 <td><?php echo $row['availability'] ? "Available" : "Unavailable"; ?></td>
                                 <td>
                                     <a href="edit_menu.php?id=<?php echo $row['product_id']; ?>" class="btn-view">Edit</a>
-                                    <a href="delete_menu.php?id=<?php echo $row['product_id']; ?>" class="btn-delete" onclick="return confirm('Are you sure you want to delete this menu item?');">Delete</a>
+                                    <a href="delete_menu.php?id=<?php echo $row['product_id']; ?>" class="btn-delete-direct" onclick="return confirm('Are you sure you want to delete this menu item?');">Delete</a>
                                 </td>
                             </tr>
                             <?php
@@ -106,22 +109,6 @@ $con = $db->conn;
         </div>
     </div>
 
-    <div class="footer">
-        <div class="left-info">
-            <p class="title-footer"><img class="logo-footer" src="../../assets/logo/Logo.png" alt="logo">Mamaku Vegetarian</p>
-            <h5>Student Pavilion UNIMAS</h5>
-            <p>93400 Kota Samarahan, Sarawak</p>
-        </div>
-        <div class="contact-info">
-            <ul class="ctc">
-                <li class="ctc-title"><p>Contact Us</p></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-            </ul>
-        </div>
-        <div class="btm-footer">
-            <p>Copyright &copy; Mamaku Vegetarian All Rights Reserved.</p>
-        </div>
-    </div>
+    
 </body>
 </html>

@@ -2,46 +2,48 @@
 { 
     background-color: #D9D9D9;
     position: absolute;
-    width: 1150px;
-    height: 50vh;
+    width: 76cqi;
+    height: 35cqi;
     left: 1%;
-    top: 10%;
-    margin-top: 30px;
+    margin-top: 3cqi;
 }
 .txt-add{
     display: block;
     font-family: 'Inter';
-    margin-top: 20px; 
-    margin-left: 20px;
-    margin-bottom: 30px;
-    font-size: 20px;
+    margin-top: 2cqi; 
+    margin-bottom: 2cqi;
+    font-size: 1.5cqi;
 }
 .txt-add label
 {
     text-align: center;
-    margin-right: 100px;
+    margin-right: 1cqi;
     position: absolute;
-    margin-left: 5rem;
+    margin-left: 5cqi;
+    font-size: 1.5cqi;
 }
 .txt-add input
 {
     width: 30%;
     border: none;
-    margin-left: 30%;
+    margin-left: 20cqi;
+    font-size: 1.5cqi;
 }
 .txt-add select
 {
-    margin-left: 30% ;
+    margin-left: 20cqi ;
     border: none;
     color: #777777;
     font-family: 'inter';
+    width: 10cqi;
+    font-size: 1.5cqi;
 }
 .txt-add textarea{
-    margin-left: 30%;
+    margin-left: 20cqi;
     width: 50%;
     border: none;
     resize: none;
-    font-size: 18px;
+    font-size: 1.5cqi;
 }
 .txt-add input[type="file"]::-webkit-file-upload-button
 {
@@ -50,27 +52,31 @@
     border-color: #593FDA;
     background: #e9e2e2;
 }
+.txt-add img{
+    width: 8cqi;
+    height: 5cqi;
+}
 .inline-form{
     
-    left: 20%;
+    left: 20cqi;
 }
 
 .btn-add
 {
     position: absolute;
-    left: 30%;
-    top: 90%;
-    margin-top: 30px;
-    width: 700px;
+    left: 22cqi;
+    bottom: -12cqi;
+    width: 50cqi;
 }
 
 .btn-add button.btn, a.btn
 {
     background-color:#D9D9D9 ;
-    margin-right: 20%; 
-    padding-left: 8%;padding-right: 8%;
+    margin-right: 10cqi; 
+    padding-left: 3cqi;padding-right: 3cqi;
     border-radius: 5px;
     font-weight: 700;
+    font-size: 1.1cqi;
 }
 .btn-add button.btn:hover
 {
@@ -88,10 +94,10 @@
 .display-menu
 {
     position: absolute;
-    width: 1150px;
+    width: 75cqi;
     height: 50vh;
-    left: 1%;
-    top: 20%;
+    left: 1cqi;
+    margin-top: 3cqi;
 }
 
 .displayData /*  control display with css */
@@ -105,34 +111,53 @@
     border: 2px solid seashell;
     background: #F7F9FA;
     border-radius: 7px;
-    padding-left: 20px;
+    padding-left: 10cqi;
     width: 100%;
     text-align: center;
 }
 .displayData table tr
 {
-    margin-left: 2px;
-    border: 2px solid #dddddd;
+    margin-left: 1cqi;
+    border: 1px solid #dddddd;
     position: relative;
-    padding: 8px;  
+    padding: 8cqi;  
 }
 .displayData table td
 {
     border: 1px solid #1a1a1a;  
 }
-.btn-view
+.displayData .btn-view
 {
-    margin-right: -1.5rem;margin-left: -1.5rem;
+    margin-right: 1.5rem;margin-left: -1.5rem;
     padding-left: 2cqi;padding-right: 2cqi;
     padding-top: 0.3cqi;padding-bottom: 0.3cqi;
     background-color: #1376c1;
     border-radius: 6px;
     border: none;
     color: white;
+    text-decoration: none;
+    font-size: 1cqi;
 }
 .btn-view:hover
 {
     background-color: #a2c1d9;
+}
+
+.displayData .btn-delete-direct
+{
+    margin-left: -1.5rem;margin-right: -1.5rem;
+    padding-left: 2cqi;padding-right: 2cqi;
+    padding-top: 0.3cqi;padding-bottom: 0.3cqi;
+    background-color: #f1081f;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 1cqi;
+}
+.btn-delete-direct:hover
+{
+    background-color:#f788bf;
 }
 .error{
     color: #fa284e;
@@ -145,17 +170,17 @@
 }
 .btn-delete
 {
-
-    margin-right: -1.5rem;margin-left: -1.5rem;
-    padding-left: 2cqi;padding-right: 2cqi;
-    padding-top: 0.3cqi;padding-bottom: 0.3cqi;
-    background-color: #1376c1;
-    border-radius: 6px;
+    padding-left: 1cqi;padding-right: 1cqi;
+    padding-top: 0.5cqi;padding-bottom: 0.5cqi;
     border: none;
     color: white;
+    position: absolute;
+    right:2cqi;
+    top: 2cqi;
 }
 .btn-delete i
 {
+    font-size: 1.5cqi;
     color: #4a36b1;
 }
 .btn-delete button
@@ -169,25 +194,30 @@
 .add-category-form {
     display: none; /* Initially hidden */
     background-color: #f9f9f9; /* Light background */
-    padding: 20px;
+    padding: 2cqi;
     border: 1px solid #ccc; /* Light border */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin-top: 20px; /* Spacing from other elements */
+    margin-top: 2cqi; /* Spacing from other elements */
+    position: absolute;
+    bottom: 10cqi;
+    left: 1cqi;
+    width: 70cqi;
+    height: 20cqi;
 }
 
 /* Headline Styling */
 .add-category-form h5 {
-    font-size: 18px;
+    font-size: 1.8cqi;
     font-weight: bold;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 1.5cqi;
     text-align: center; /* Center headline */
 }
 
 /* Input and Textarea Styling */
 .add-category-form .txt-add {
-    margin-bottom: 15px;
+    margin-bottom: 1.5cqi;
     display: flex;
     flex-direction: column; /* Stack label and input vertically */
 }
@@ -201,11 +231,11 @@
 
 .add-category-form input,
 .add-category-form textarea {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 1.4cqi;
+    padding: 0.5cqi;
     border: 1px solid #ccc;
     border-radius: 4px; /* Rounded input fields */
-    width: 100%; /* Full width */
+    width: 50%; /* Full width */
     box-sizing: border-box; /* Include padding in width */
     background-color: #fff;
     color: #333;
@@ -221,28 +251,28 @@
 }
 
 /* Button Styling */
-.add-category-form .btn-add {
+.add-category-form .txt-add button {
     text-align: center; /* Center the button */
-    margin-top: 10px;
+    margin-top: 1cqi;
 }
 
-.add-category-form .btn {
+.add-category-form button {
     background-color: #007bff; /* Primary color */
     color: #fff;
-    padding: 10px 20px;
+    padding: 1cqi 2cqi;
     border: none;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 1.4cqi;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.add-category-form .btn:hover {
+.add-category-form button:hover {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
-.add-category-form .btn:disabled {
+.add-category-form button:disabled {
     background-color: #ccc; /* Disabled button styling */
     cursor: not-allowed;
 }

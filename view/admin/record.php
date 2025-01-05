@@ -9,7 +9,7 @@ $con = $db->conn;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link type="image/svg" rel="icon" href="../../assets/icons/Logo.svg">
     <title>Transaction Record</title>
 </head>
 <body>
@@ -25,27 +25,13 @@ $con = $db->conn;
                     <button type="submit" name="search" class="btn-search"><i class="fa fa-search"></i></button>
                 </form>
             </div>    
-            <div class="right-side">
-                <a href=""><i class="fa fa-bell"></i></a>
-                <a href=""><i class="fa fa-user"></i></a>
-            </div>
         </div>
  
         <div class="table-record">
             <!-- Content for Transaction Summary -->
             <div class="display-data-record">
                 <h5>Transaction Summary</h5>
-                <div class="control-table-record">
-                    <form method="get">
-                        <ul class="controller">
-                            <li><i class="fa fa-sliders"></i></li>
-                            <li><a href="">Daily</a></li>
-                            <li><a href="">Weekly</a></li>
-                            <li><a href="">Monthly</a></li>
-                        </ul>
-                        <button>Generate Report<i class="fa fa-caret-down"></i></button>
-                    </form>
-                </div>
+                
                 <div class="display-trans">
                     <table>
                         <tr>
@@ -99,22 +85,5 @@ $con = $db->conn;
         </div>
     </div>
 
-    <div class="footer">
-        <div class="left-info">
-            <p class="title-footer"><img class="logo-footer" src="../../assets/logo/Logo.png" alt="logo">Mamaku Vegetarian</p>
-            <h5>Student Pavilion UNIMAS</h5>
-            <p>93400 Kota Samarahan, Sarawak</p>
-        </div>
-        <div class="contact-info">
-            <ul class="ctc">
-                <li class="ctc-title"><p>Contact Us</p></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-            </ul>
-        </div>
-        <div class="btm-footer">
-            <p>Copyright &copy; Mamaku Vegetarian All Rights Reserved.</p>
-        </div>
-    </div>
 </body>
 </html>

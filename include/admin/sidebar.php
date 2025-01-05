@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="../../style/admin/dashboard.css">
 <link rel="stylesheet" href="../../style/admin/display_data.css">
 <link rel="stylesheet" href="../../style/admin/menu_edit.css">
+<link rel="stylesheet" href="../../style/footer.css">
 
 <div class="header-left">
     <div class="side-nav">

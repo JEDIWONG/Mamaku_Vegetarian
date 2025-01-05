@@ -3,7 +3,6 @@
     require_once "../../model/database_model.php";
     // Initialize the Database class
     $conn = new Database();
-
     $num = 1;
 ?>
 
@@ -14,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/menu_edit.css">
     <link rel="stylesheet" href="../../style/admin/display_data.css">
+    <link rel="icon" type="image/svg" href="../../assets/images/Logo.svg">
     <title>Member Account</title>
 </head>
 <body>
@@ -23,16 +23,7 @@
     <div class="dashboard-content">
         <div class="top-dashboard">
             <h5>Member Account</h5>
-            <div class="search">
-                <form method="post">
-                    <input type="search" name="search" class="txt-search" placeholder="Search" disabled>
-                    <button type="submit" name="search" class="btn-search" disabled><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="right-side">
-                <a href=""><i class="fa fa-bell"></i></a>
-                <a href=""><i class="fa fa-user"></i></a>
-            </div>
+
         </div>
 
         <div class="info-register">
@@ -58,14 +49,14 @@
         <div class="table-user">
             <h4>Registered Member Account</h4>
             <div class="right-search-user">
-                <form method="post">
-                    <input type="search" name="search" class="user-search" placeholder="Search">
+                <form method="post" action="search_users.php">
+                    <input type="search" name="searchtxt" class="user-search" placeholder="Search">
                     <button type="submit" name="search" class="btn-search-user"><i class="fa fa-search"></i></button>
                     <select name="search-user-list">
                         <option value="">Default</option>
-                        <option value="recent">Recently Updated</option>
-                        <option value="az">Name (A-Z)</option>
-                        <option value="za">Name (Z-A)</option>
+                        <option value="DESC">Recently Updated</option>
+                        <option value="ASC">Name (A-Z)</option>
+                        <option value="DESC ">Name (Z-A)</option>
                     </select>
                 </form>
             </div>
@@ -113,22 +104,5 @@
         </div>
     </div>
 
-    <div class="footer">
-        <div class="left-info">
-            <p class="title-footer"><img class="logo-footer" src="../../assets/logo/Logo.png" alt="logo"> Mamaku Vegetarian</p>
-            <h5>Student Pavilion UNIMAS</h5>
-            <p>93400 Kota Samarahan, Sarawak</p>
-        </div>
-        <div class="contact-info">
-            <ul class="ctc">
-                <li class="ctc-title"><p>Contact Us</p></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
-            </ul>
-        </div>
-        <div class="btm-footer">
-            <p>Copyright &copy; Mamaku Vegetarian All Rights Reserved.</p>
-        </div>
-    </div>
 </body>
 </html>

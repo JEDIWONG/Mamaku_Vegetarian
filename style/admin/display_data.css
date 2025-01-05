@@ -38,6 +38,7 @@
     font-family: 'Inter';
     font-size: 1.8cqi;
 }
+/*Users record table styleist */
 .table-user
 {
     position: absolute;
@@ -59,7 +60,7 @@
 .display-data-users table
 {
     width: 100%;
-    padding-left: 20px;
+    padding-left: 20cqi;
     text-align: center;
 }
 
@@ -100,10 +101,29 @@
 /*for record.php css style table transaction record*/
 .table-record
 {
-    margin-top: 3cqi;
+    margin-top: 2cqi;
     width: 79cqi;
-    height: 30cqi;
+    height: 100vh;
     background: #F7F9FA;
     border-radius: 10px;
     border: 1px solid black;
+    position: absolute;
+}
+.display-data-record h5
+{
+    margin-top: 1cqi;
+    margin-left: 2cqi;
+    font-weight: bold;
+}
+
+.display-trans{
+    position: absolute;
+    margin-left: 1cqi;
+    width: 77cqi;
+    height:75vh;
+}
+.display-trans table{
+    width: 100%;
+    padding-left: 20cqi;
+    text-align: center;
 }

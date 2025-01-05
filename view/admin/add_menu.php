@@ -38,7 +38,7 @@
         $temp_img = $_FILES['upload']['tmp_name'];
         $size_img = $_FILES['upload']['size'];
         $max_size = 1 * 1024 * 1024; // 1MB
-        $upload_dir = "../../assets/upload/";
+        $upload_dir = "../../assets/images/";
 
         // Generate a unique file name to avoid overwriting
         $img_basename = time() . "_" . basename($img);
@@ -153,8 +153,8 @@
                     <label for="category_desc">Description:</label>
                     <textarea name="category_desc" id="category_desc" class="inline-form"></textarea>
                 </div>
-                <div class="btn-add">
-                    <button type="submit" name="add_category" class="btn">Add Category</button>
+                <div class="txt-add">
+                    <button type="submit" name="add_category">Add Category</button>
                 </div>
             </form>
         </div>
