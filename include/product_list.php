@@ -35,7 +35,7 @@
                         ?>
                         
                             <a class="product-card" href="product_details.php?id=<?php echo $product['product_id']; ?>">
-                                <img src="../assets/images/<?php echo htmlspecialchars($productImage); ?>" alt="<?php echo htmlspecialchars($productName); ?>">
+                                <img src="../assets/images/products/<?php echo htmlspecialchars($productImage); ?>" alt="<?php echo htmlspecialchars($productName); ?>">
                                 <h3><?php echo htmlspecialchars($productName); ?></h3>
                                 <p>RM <?php echo number_format($productPrice, 2); ?></p>
                             </a>

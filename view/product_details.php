@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
                 class="product-info-container"
                 data-product-id="<?php echo htmlspecialchars($productId); ?>"
                 data-product-price="<?php echo htmlspecialchars($productPrice); ?>">
-                <img src="../assets/images/<?php echo htmlspecialchars($productImage); ?>">
+                <img src="../assets/images/products/<?php echo htmlspecialchars($productImage); ?>">
                 <div class="product-info">
                     <h1><?php echo htmlspecialchars($productName); ?></h1>
                     <p class="product-desc"><?php echo htmlspecialchars($productDescription); ?></p>

@@ -9,11 +9,10 @@ CREATE TABLE user (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,              -- Used for members
+    email VARCHAR(100) UNIQUE,
     phone_number VARCHAR(15),
-    address TEXT,
     password_hash VARCHAR(255) NOT NULL,
-    role ENUM('Member', 'Admin', 'SuperAdmin') DEFAULT 'Member',
+    role ENUM('Member', 'Admin') DEFAULT 'Member',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
