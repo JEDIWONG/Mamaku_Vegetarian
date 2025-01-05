@@ -6,7 +6,6 @@
 }
 
 .method{
-    
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -22,6 +21,8 @@
 
 .method img{
     border-radius: 20px;
+    height: 100px;
+
 }
 
 .method p{
@@ -41,7 +42,6 @@
     column-gap: 10%;
     margin-inline: 20%;
 }
-
 
 .checkout-price-bar{
     display: flex;

@@ -76,12 +76,12 @@
         <section class="checkout-method">
             
             <div class="method">
-                <img src="../assets/images/placeholder.png">
+                <img src="../assets/icons/card-2-svgrepo-com.svg">
                 <p>Cashless</p>
             </div>
             
             <div class="method">
-                <img src="../assets/images/placeholder.png">
+                <img src="../assets/icons/cash-svgrepo-com.svg">
                 <p>Cash</p>
             </div>
 
@@ -92,17 +92,17 @@
             <section class="checkout-cashless-list">
 
                 <div class="method">
-                    <img src="../assets/images/placeholder.png">
+                    <img src="../assets/icons/duitnow.png">
                     <p>Duitnow QR</p>
                 </div>
 
                 <div class="method">
-                    <img src="../assets/images/placeholder.png">
+                    <img src="../assets/icons/bank-svgrepo-com.svg">
                     <p>FPX</p>
                 </div>
 
                 <div class="method">
-                    <img src="../assets/images/placeholder.png">
+                    <img src="../assets/icons/spay.png">
                     <p>SPAY</p>
                 </div>
                 
