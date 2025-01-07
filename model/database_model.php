@@ -16,7 +16,7 @@
 
         public function query($sql) {
             return $this->conn->query($sql);
-        }
+        }   
 
         public function escape_string($value) {
             return $this->conn->real_escape_string($value);

@@ -43,6 +43,7 @@ class EmailNotification {
             return true;
         } catch (Exception $e) {
             throw new Exception("Email sending failed: " . $this->mailer->ErrorInfo);
+            
         }
     }
 }

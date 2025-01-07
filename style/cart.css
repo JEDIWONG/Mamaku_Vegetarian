@@ -117,3 +117,25 @@
     cursor: pointer;
     background-color: rgb(214, 78, 0);
 }
+
+@media(max-width:425px){
+    .cart-item-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-item-info{
+        width: 100%;
+        display: flex;
+        align-items: start;
+        padding: 0 10%;
+    }
+
+    .cart-price-bar {
+        padding: 0 10%;
+    }
+
+    .checkout-btn {
+        margin: 0 10%;
+    }
+}

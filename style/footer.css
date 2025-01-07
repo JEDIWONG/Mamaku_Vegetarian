@@ -4,9 +4,8 @@
     background-color: black;
     color: white;
     margin: 0px;
-    width: 100%;
     padding-block: 30px;
-    padding-left: 20%;
+    padding: 2% 10% 2% 20%;
     margin-top: 100px;
 }
 
@@ -42,6 +41,7 @@
     align-content: center;
     align-items: start;
 }
+
 
 .footer-external-list{
     display: flex;
@@ -91,3 +91,32 @@
     margin-block: 30px;
 }
 
+
+/**************************************************************************/
+@media (max-width: 426px) {
+    .footer-container{
+        padding: 2% 10%;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-info{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    .footer-link{
+        padding: 0;
+    }
+
+    .footer-copy{
+        padding-left: 0%;
+        align-items: center;
+    }
+}

@@ -6,6 +6,7 @@
     background-color: #000000;
     align-items: center;
     overflow-y: hidden;
+    box-sizing: border-box;
  }
 
 .login-info {
@@ -20,7 +21,7 @@
     align-items: center;
     border-right: 1px solid rgb(255, 255, 255);
     height: 80%;
-
+    box-sizing: border-box;
 }
 
 .login-info button {
@@ -116,4 +117,91 @@
 
 .login-form button:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 1400px) {
+    .login-form {
+        width: 25%; /* Slightly larger for wider screens */
+    }
+}
+
+/* For screens up to 1200px (Large tablets and small desktops) */
+@media (max-width: 1200px) {
+    .login-form {
+        width: 30%; /* Wider form for smaller screens */
+    }
+}
+
+/* For screens up to 992px (Tablets) */
+@media (max-width: 992px) {
+    .login-page-container {
+        flex-direction: row; /* Maintain row layout for tablets */
+    }
+    .login-form {
+        width: 35%; /* Adjust form width for tablets */
+    }
+}
+
+/* For screens up to 768px (Large mobile devices and smaller tablets) */
+@media (max-width: 768px) {
+    .login-page-container {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto; /* Flexible height */
+    }
+
+    .login-info {
+        width: 100%; /* Full width */
+        height: auto;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid white; /* Add bottom border */
+    }
+
+    .login-form {
+        width: 50%; /* Half-width for mobile devices */
+        margin-inline: auto; /* Center the form horizontally */
+    }
+}
+
+/* For screens up to 576px (Small mobile devices) */
+@media (max-width: 576px) {
+    .login-form {
+        width: 80%; /* More space for the form but consistent */
+        margin: 0 auto; /* Center align the form */
+    }
+
+    .login-logo img {
+        width: 5rem; /* Use relative units for scalability */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .login-logo p {
+        font-size: 1.5rem; /* Adjust text size relatively */
+        text-align: center; /* Center-align text for better UX */
+    }
+}
+
+/* For very small screens up to 480px */
+@media (max-width: 480px) {
+    .login-form {
+        width: 90%; /* Almost full width for better readability */
+        margin: 0 auto; /* Center align the form */
+    }
+
+    .login-logo img {
+        width: 4rem; /* Further reduce size */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .login-logo p {
+        font-size: 1.2rem; /* Smaller but readable text */
+        text-align: center; /* Center-align for clarity */
+    }
+
+    .login-info h1, 
+    .login-info h2, 
+    .login-info h3 {
+        font-size: 1rem; /* Uniform and scalable heading sizes */
+        text-align: center; /* Align headings to the center */
+    }
 }

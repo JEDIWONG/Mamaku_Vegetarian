@@ -64,3 +64,48 @@
 .notification-btn:hover{
     background-color: rgb(213, 213, 213);
 }
+
+@media (max-width: 768px) {
+    .search-panel-container {
+        flex-direction: column; /* Stack search panel elements */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .search-panel-container h1 {
+        text-align: left;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .search-bar-form {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .search-bar-form input {
+        width: 80%; /* Adjust input width */
+    }   
+}
+
+@media (max-width: 768px) {
+    .search-panel-container h1 {
+        font-size: 18px;
+    }
+
+    .search-bar-form input {
+        width: 100%; /* Take up full width on very small screens */
+        padding: 8px;
+    }
+
+    .search-bar-form button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    .notification-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1000; /* Ensure it is above other elements */
+    }
+}

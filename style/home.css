@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 header{
@@ -64,28 +65,28 @@ header a:hover{
 
 header nav ul li .btn.signup {
     background: #e74c3c;
-    border-radius: 10px; /* Rounded corners */
-    color: white; /* White text */
-    padding: 10px 20px; /* Adjust padding */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    border-radius: 10px; 
+    color: white; 
+    padding: 10px 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
 }
 
 header nav ul li .btn.signup:hover {
-    background: #c0392b; /* Darker red on hover */
+    background: #c0392b; 
 }
 
 header nav ul li .btn.login {
     background: #2ecc71;
-    border-radius: 10px; /* Rounded corners */
-    color: white; /* White text */
-    padding: 10px 20px; /* Adjust padding */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    border-radius: 10px; 
+    color: white; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
 }
 
 header nav ul li .btn.login:hover {
-    background: #27ae60; /* Darker green on hover */
+    background: #27ae60; 
 }  
 
 .news{
@@ -131,7 +132,7 @@ footer{
 .about{
     background-color:antiquewhite;
     color:white;
-    height:120vh;
+    height:auto;
     background-image: url("../assets/images/Shop.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -141,51 +142,173 @@ footer{
 }
 
 .about h2{
-    font-size: 60px;
+    font-size: 50px;
     margin-top: 20px;
     margin-left: 40px;
-    text-align: left;
+    text-align: center;
     -webkit-text-stroke:1px #000000;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style for the box */
+.box-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1.5rem;
+    justify-content: center; 
+    align-items: flex-start;
+    padding: 2rem; 
+    margin: 0 auto;
+}
+
+
+/* Box Styling */
 .box {
-    width: 500px;               /* Width of the box */
-    height: 130px;              /* Height of the box */
-    background-color: #B5986D;  /* Background color of the box */
-   /* border: 1px solid #000000;  /* Border around the box */
-    border-radius: 50px;        /* Optional: Rounded corners */
-    padding: 10px; 
-    margin-top: 50px;
-    margin-left: 50px;
-    box-shadow: 0px 0px 3px black;             /* Space inside the box */
+    width: 90%; 
+    max-width: 500px; 
+    background-color: #B5986D; 
+    border-radius: 20px; 
+    padding: 20px;
+    margin: 20px auto; 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+/* Image Styling */
+.box img {
+    width: 80px; 
+    height: auto; 
+    border-radius: 10px; 
+    flex-shrink: 0; 
+}
+
+/* Content Section (Text) */
+.box h3,
+.box p {
+    margin: 0; 
+    text-align: left; 
 }
 
 .box h3 {
-    color: black;               /* Text color */
-    font-size: 25px;            /* Font size */
+    color: black; 
+    font-size: 1.2rem; 
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-left: 150px;
-    padding-top: 15px;
+    margin-bottom: 0.5rem; 
 }
 
-.box p{
-    color: black;               /* Text color */
-    font-size: 15px;            /* Font size */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-left: 153px;
-    padding-top: 15px;
-}
-
-.box img{
-    width: 25%;
-    border-radius: 10px;
-    position: relative;
-    bottom: 100px;
+.box p {
+    color: black; 
+    font-size: 1rem; 
+    line-height: 1.5; 
 }
 
 .menu{
     display: none;
+}
+
+.dropdown_menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;       
+    transition: height cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open{
+    height: 210px;
+}
+
+.dropdown_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 936px) {
+
+    header ul {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+        background-color: transparent;
+        color: white;
+        font-size: 2.5rem; 
+        position: absolute;
+        top: 10px;
+        right: 10px; 
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown_menu{
+        display: block;
+    }
+
+    /* News Section */
+    .news h2 {
+        font-size: 2rem; 
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .news p {
+        font-size: 1rem;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+
+    .about h2{
+        font-size: 2rem;
+        text-align: center;
+    }
+    /* Box Section */
+    .box {
+        width: 70%; 
+        margin: 1rem auto; 
+        padding: 1rem; 
+        border-radius: 20px; 
+    }
+
+    .box h3,
+    .box p {
+        padding-left: 0;
+        text-align: center; 
+        margin: 0.5rem 0;
+        font-size: 1rem; 
+    }
+
+    .box img {
+        width: 60px; 
+        height: auto; 
+        margin: 0 auto; 
+        display: block;
+        margin-bottom: 10px; 
+    }
+
+    footer {
+        font-size: 12px; 
+    }
+}
+
+@media (max-width: 576px) {
+    .dropdown_menu{
+        left: 2rem;
+        width: unset;
+    }
 }

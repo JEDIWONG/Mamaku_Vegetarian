@@ -25,6 +25,13 @@ main{
     background-color: rgb(119, 14, 0);
 }
 
+@media(max-width:425px){
+    main{
+        margin-left: 0%;
+    }
+  }
+  
+
 
 
 

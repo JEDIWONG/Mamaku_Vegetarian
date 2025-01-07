@@ -5,6 +5,7 @@
     font-family: Arial, sans-serif; 
     background-color: #000000;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .register-info {
@@ -18,6 +19,7 @@
     justify-content: center;
     align-items: center;
     border-right: 1px rgb(255, 255, 255) solid;
+    box-sizing: border-box;
 }
 
 
@@ -58,7 +60,6 @@
     margin-bottom: 10px;
 }
 
-
 .register-form {
     background-color: #ffffff;
     padding-block: 30px;
@@ -73,37 +74,7 @@
     border-radius: 20px;
     width: 15%;
     margin-inline: 10%;
-    
 }
-
-.register-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.register-form input {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.register-form button {
-    width: 80%;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.register-form button:hover {
-    background-color: #45a049;
-}
-
-
 
 .register-form h1 {
     font-size: 2rem;
@@ -132,4 +103,88 @@
 
 .register-form button:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 1400px) {
+    .register-form {
+        width: 25%; 
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .register-form {
+        width: 30%; 
+    }
+}
+
+
+@media (max-width: 992px) {
+    .register-page-container {
+        flex-direction: row; 
+    }
+    .register-form {
+        width: 35%; 
+    }
+}
+
+
+@media (max-width: 768px) {
+    .register-page-container {
+        flex-direction: column; 
+        height: auto;
+    }
+
+    .register-info {
+        width: 100%; 
+        height: auto;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid white; 
+    }
+
+    .register-form {
+        width: 50%; 
+        margin-inline: auto; 
+    }
+}
+
+
+@media (max-width: 576px) {
+    .register-form {
+        width: 70%; 
+    }
+
+    .register-logo img {
+        width: 60px; 
+    }
+
+    .register-logo p {
+        font-size: 20px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .register-form {
+        width: 90%; 
+        margin: 0 auto; 
+    }
+
+    .register-logo img {
+        width: 4rem; 
+        height: auto; 
+    }
+
+    .register-logo p {
+        font-size: 1.2rem; 
+        text-align: center; 
+    }
+
+    .register-info h1, 
+    .register-info h2, 
+    .register-info h3 {
+        font-size: 1rem; 
+        text-align: center; 
+    }
 }
